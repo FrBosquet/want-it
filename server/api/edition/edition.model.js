@@ -8,7 +8,7 @@ const editionSchema = new mongoose.Schema({
     require: true
   },
   name: String,
-  features: [Object]
+  features: []
 }, {
   timestamps: {
     createdAt: "created_at",

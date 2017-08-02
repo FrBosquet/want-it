@@ -3,6 +3,7 @@ const path = require('path');
 module.exports = (app) => {
   app.use('/brand',   require('./brand'));
   app.use('/product', require('./product'));
+  app.use('/edition', require('./edition'));
   app.use('/user',    require('./user'));
 
 	// catch 404 and forward to Angular

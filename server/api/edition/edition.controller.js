@@ -2,7 +2,12 @@ const Edition = require('./edition.model');
 
 const getAll = (req, res, next) =>{
   Edition.find()
-    .populate('productId')
+    .populate({
+      path: 'productId',
+      populate: {
+        path: 'brandId'
+      }
+    })
     .exec()
     .then(editions=>{
       res.status(200).json({

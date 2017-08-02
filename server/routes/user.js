@@ -3,7 +3,7 @@ const router = express.Router();
 const badRequest = require('./badRequest');
 
 const {
-  ensureLogin, signup, login, facebookAuth, facebookCallback, logout, getuser
+  ensureLogin, signup, login, facebookAuth, facebookCallback, logout, getuser, all
 } = require('../api/user/user.controller');
 
 router.get('/', (req, res, next) =>{
@@ -21,6 +21,7 @@ router.get("/facebook/callback", facebookCallback );
 
 router.get('/logout', ensureLogin(), logout);
 router.get('/getuser', ensureLogin(), getuser);
+router.get('/all', all);
 
 
 

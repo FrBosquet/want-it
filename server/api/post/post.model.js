@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const postSchema = new mongoose.Schema({
   wishId: {
     type: Schema.Types.ObjectId,
-    ref: 'Edition',
+    ref: 'Wish',
     require: true
   },
   comment: String,

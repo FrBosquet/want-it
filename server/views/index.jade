@@ -5,10 +5,10 @@ block content
   p Welcome to want-it
   p#msg
   if user != undefined
-    p=user
+    p Loged as #{user.name}
     button#logout logout
   else
-    p try local login
+    h3 Local login
     form(action='#', method='POST')#login
       label(for='username') Username:
       input(type='text', name='username').input
@@ -17,7 +17,17 @@ block content
       input(type='password', name='password').input
 
       input(type='submit', value='Iniciar sesión').button
-    p try facebook login
-    button#fblogin Facebook login
+  h3 User list
+  ul#user-list
+  h3 Wish list
+  ul#wish-list
+  h3 Post list
+  ul#post-list
+  h3 Brand list
+  ul#brand-list
+  h3 Product list
+  ul#product-list
+  h3 Edition list
+  ul#edition-list
   script(src='https://code.jquery.com/jquery-3.2.1.min.js')
   script(src='/javascripts/loginController.js')

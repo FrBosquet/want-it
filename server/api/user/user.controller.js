@@ -113,6 +113,19 @@ const getuser = ( req, res, next ) => {
   });
 }
 
+const all = (req, res, next) => {
+  User.find()
+    .exec()
+    .then( users => res.status(200).json({
+      message: 'Request for all the users in db',
+      users
+    }))
+    .catch( err => res.status(400).json({
+      message: 'Error requesting users',
+      err
+    }))
+}
+
 module.exports = {
   ensureLogin,
   signup,
@@ -120,5 +133,6 @@ module.exports = {
   facebookAuth,
   facebookCallback,
   logout,
-  getuser
+  getuser,
+  all
 }

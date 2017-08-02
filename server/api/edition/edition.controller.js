@@ -8,6 +8,7 @@ const getAll = (req, res, next) =>{
         path: 'brandId'
       }
     })
+    .sort({productId : -1})
     .exec()
     .then(editions=>{
       res.status(200).json({
@@ -25,7 +26,12 @@ const getAll = (req, res, next) =>{
 
 const getByProduct = (req, res, next) => {
   Edition.find({ productId : req.params.id})
-    .populate('productId')
+    .populate({
+      path: 'productId',
+      populate: {
+        path: 'brandId'
+      }
+    })
     .exec()
     .then(editions=>{
       res.status(200).json({
@@ -43,7 +49,12 @@ const getByProduct = (req, res, next) => {
 
 const getOne = (req, res, next) =>{
   Edition.findById( req.params.id)
-    .populate('productId')
+    .populate({
+      path: 'productId',
+      populate: {
+        path: 'brandId'
+      }
+    })
     .exec()
     .then(edition=>{
       res.status(200).json({
@@ -88,6 +99,12 @@ const create = (req, res, next) =>{
 
 const edit = (req, res, next) =>{
   Edition.findById (req.params.id)
+    .populate({
+      path: 'productId',
+      populate: {
+        path: 'brandId'
+      }
+    })
     .exec()
     .then( edition => {
         edition = Object.assign(edition, req.body);

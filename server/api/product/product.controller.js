@@ -3,6 +3,7 @@ const Product = require('./product.model');
 const getAll = (req, res, next) =>{
   Product.find()
     .populate('brandId')
+    .sort({brandId : -1})
     .exec()
     .then(products=>{
       res.status(200).json({

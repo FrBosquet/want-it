@@ -2,6 +2,7 @@ const Brand = require('./brand.model');
 
 const getAll = (req, res, next) =>{
   Brand.find()
+    .sort({_id : -1})
     .exec()
     .then(brands=>{
       res.status(200).json({

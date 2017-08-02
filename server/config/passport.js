@@ -22,7 +22,8 @@ module.exports = ( app ) => {
   });
 
   passport.use('local', new LocalStrategy((username, password, next) => {
-    User.findOne({name: username})
+    console.log('username', username, 'password', password);
+    User.findOne({username})
       .exec()
       .then( user =>{
         if (!user) {
@@ -43,15 +44,23 @@ module.exports = ( app ) => {
   passport.use(new FbStrategy({
     clientID:process.env.FACEBOOK_CLIENT_ID,
     clientSecret:process.env.FACEBOOK_CLIENT_SECRET,
-    callbackURL: '/auth/facebook/callback'
+    callbackURL: '/user/facebook/callback'
   }, (accessToken, refreshToken, profile, next)=> {
-    User.findOne({facebookID: profile.id}, (err, user)=>{
+    User.findOne({facebookId: profile.id}, (err, user)=>{
       if(err){
-        return next(err);
+        // return next(err);
+        res.status(400).json({
+          message: 'Something went wrong',
+          err
+        })
       }
       if(user){
         console.log(profile);
-        return next(null, user);
+        // return next(null, user);
+        res.status(200).json({
+          message: 'The user already exists',
+          user
+        })
       }
 
       const newUser = new User({
@@ -60,7 +69,10 @@ module.exports = ( app ) => {
       });
 
       newUser.save()
-        .then(()=>next(null, newUser))
+        .then(user=>res.status(201).json({
+          message: 'Created a new user',
+          user
+        }))
         .catch((err)=>next(err));
     })
   }));

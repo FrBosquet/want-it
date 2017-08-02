@@ -1,5 +1,23 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  h1 Want-it control panel
+  p Welcome to want-it
+  p#msg
+  if user != undefined
+    p=user
+    button#logout logout
+  else
+    p try local login
+    form(action='#', method='POST')#login
+      label(for='username') Username:
+      input(type='text', name='username').input
+
+      label(for='password') Password:
+      input(type='password', name='password').input
+
+      input(type='submit', value='Iniciar sesión').button
+    p try facebook login
+    button#fblogin Facebook login
+  script(src='https://code.jquery.com/jquery-3.2.1.min.js')
+  script(src='/javascripts/loginController.js')

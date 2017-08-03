@@ -15,7 +15,7 @@ header .wrapper{
   display: flex;
 }
 
-header .wrapper .title{
+header .wrapper h1.title{
   @include titles;
 }
 

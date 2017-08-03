@@ -4,7 +4,8 @@
       WantIt
     </h1>
     <nav class="menu">
-      mi options go here
+      <app-button [label]="'home'" (click)='enroute("home")'></app-button>
+      <app-button [label]="'session'" (click)='enroute("login")'></app-button>
     </nav>
   </div>
 </header>

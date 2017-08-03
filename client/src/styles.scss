@@ -1,5 +1,5 @@
 @import url(https://fonts.googleapis.com/css?family=Questrial);
-@import url(https://fonts.googleapis.com/css?family=Lobster);
+@import url(https://fonts.googleapis.com/css?family=Monoton);
 @import './variables.scss';
 
 body{
@@ -7,4 +7,25 @@ body{
   padding: 0px;
   margin: 0px;
   background-color: $col-bg;
+}
+
+h1, h2, h3, h4, h5, h6{
+  @include header;
+}
+
+p{
+  padding: 15px;
+  text-align: justify;
+}
+
+label, input{
+  display: block;
+  width: 100%;
+  margin-top: 10px;
+}
+
+input[type="text"], input[type="password"]{
+  padding: 3px;
+  border: 1px solid $col-secondary;
+  border-radius: 5px;
 }

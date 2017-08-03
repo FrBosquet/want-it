@@ -1,12 +1,28 @@
-var path = require('path');
-var favicon = require('serve-favicon');
-var index = require('./routes/index');
+const path = require('path');
+const favicon = require('serve-favicon');
+const index = require('./routes/index');
 
-var app = require('express')();
+const app = require('express')();
+
+const cors = require('cors');
+const whitelist = [
+    'http://localhost:4200',
+];
+const corsOptions = {
+    origin: function(origin, callback){
+        var originIsWhitelisted = whitelist.indexOf(origin) !== -1;
+        callback(null, originIsWhitelisted);
+    },
+    credentials: true
+};
+app.use(cors(corsOptions));
+
 require('dotenv').load();
 require('./config/express')(app);
 require('./config/passport')(app);
 require('./routes/index')(app);
+
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

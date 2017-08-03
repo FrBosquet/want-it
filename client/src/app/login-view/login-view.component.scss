@@ -1,0 +1,21 @@
+@import '../../variables.scss';
+
+.forms-wrapper{
+  @include flexcontainer(space-between);
+
+  .auth-form{
+    position: relative;
+    @include growingchild(1);
+    @include dropshadow;
+    margin: 15px;
+    padding: 10px 30px 25px 30px;
+    border: 1px solid $col-terciary;
+    height: 300px;
+
+    app-button{
+      position: absolute;
+      right: 25px;
+      bottom: 25px;
+    }
+  }
+}

@@ -1,0 +1,41 @@
+$col-primary:     #333;
+$col-secondary:   #888;
+$col-bg:          #F9F9F9;
+$col-detail:      #558cba;
+
+$mea-pagewidth: 960px;
+
+@mixin titles{
+  color: $col-primary;
+  font-family: 'Lobster', sans-serif;
+  text-shadow: 1px 1px 0px $col-detail;
+}
+
+@mixin dropshadow {
+  box-shadow: 0px 0px 10px 3px $col-primary;
+  margin-bottom: 10px;
+}
+
+@mixin fullwidthcontainer(){
+  padding: 0px 20px;
+}
+
+@mixin responsivecontainer(){
+  width: 100%;
+  max-width: 100%;
+  width: $mea-pagewidth;
+}
+
+@mixin flexcontainer($justify){
+  display: flex;
+  justify-content: $justify;
+  align-items: center;
+}
+
+@mixin fixedwidthchild($width) {
+  width: $width;
+}
+
+@mixin growingchild($grow) {
+  flex-grow: $grow;
+}

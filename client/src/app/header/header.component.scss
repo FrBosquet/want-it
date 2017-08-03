@@ -1,0 +1,26 @@
+@import '../../variables.scss';
+
+header {
+  @include fullwidthcontainer;
+  @include flexcontainer(center);
+  @include dropshadow;
+
+  background-color: $col-bg;
+  border-bottom: 2px solid $col-detail;
+
+}
+
+header .wrapper{
+  @include responsivecontainer;
+  display: flex;
+}
+
+header .wrapper .title{
+  @include titles;
+}
+
+header .wrapper .menu{
+  @include growingchild(1);
+  @include flexcontainer(flex-end) ;
+  text-align: right;
+}

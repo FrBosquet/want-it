@@ -1,1 +1,10 @@
-/* You can add global styles to this file, and also import other style files */
+@import url(https://fonts.googleapis.com/css?family=Questrial);
+@import url(https://fonts.googleapis.com/css?family=Lobster);
+@import './variables.scss';
+
+body{
+  font-family: 'Questrial', sans-serif;
+  padding: 0px;
+  margin: 0px;
+  background-color: $col-bg;
+}

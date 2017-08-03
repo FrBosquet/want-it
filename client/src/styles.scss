@@ -29,3 +29,46 @@ input[type="text"], input[type="password"]{
   border: 1px solid $col-secondary;
   border-radius: 5px;
 }
+
+.user-bullet{
+  @include dropshadow;
+  @include flexcontainer(center);
+  flex-direction: column;
+  width: 100px;
+  height: 100px;
+  background-color: $col-detail;
+  color: $col-bg;
+  border-radius: 50%;
+  position: fixed;
+  right: 30px;
+  bottom: 15px;
+  padding: 5px;
+  cursor: pointer;
+
+  $hiddenper : 0.05;
+
+  span{
+    transition: transform 0.5s;
+    position: absolute;
+  }
+
+  .username{
+    transform-origin: 50% 0%;
+    transform: scaleY(1);
+  }
+
+  .logout{
+    transform-origin: 50% 100%;
+    transform: scaleY($hiddenper);
+  }
+
+  &:hover{
+    .username{
+      transform: scaleY($hiddenper);
+    }
+
+    .logout{
+      transform: scaleY(1);
+    }
+  }
+}

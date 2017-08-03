@@ -30,6 +30,7 @@ $mea-pagewidth: 960px;
 @mixin dropshadow {
   box-shadow: 0px 5px 5px 0px $col-secondary;
   margin-bottom: 10px;
+  border: 1px solid $col-terciary;
 }
 
 @mixin fullwidthcontainer(){

@@ -20,7 +20,7 @@ router.get("/facebook", facebookAuth );
 router.get("/facebook/callback", facebookCallback );
 
 router.get('/logout', ensureLogin(), logout);
-router.get('/getuser', ensureLogin(), getuser);
+router.get('/getuser', getuser);
 router.get('/all', all);
 
 

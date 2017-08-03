@@ -2,7 +2,7 @@
   <h1>Session</h1>
   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
   <div class="forms-wrapper">
-    <form class="auth-form" (ngSubmit)="login(loginForm)" #loginForm="ngForm">
+    <form class="auth-form" #loginForm="ngForm">
       <h3>Login</h3>
       <label for="username">Username:</label>
       <input type="text" name="username" [(ngModel)]="loginUsername" value="" placeholder="Your username">
@@ -19,7 +19,7 @@
       <input type="password" name="password" value="" placeholder="Your password">
       <label for="email">Email:</label>
       <input type="text" name="text" value="" placeholder="Your email">
-      <app-button [label]="'signup'" (click)='signup()'></app-button>
+      <!-- <app-button [label]="'signup'" (click)='signup()'></app-button> -->
     </form>
   </div>
 </section>

@@ -1,0 +1,16 @@
+@import '../../variables.scss';
+
+.wish-card{
+  @include dropshadow;
+  margin: 10px;
+
+  img{
+    width: 90%;
+    margin: 10px;
+  }
+
+  p{
+    height: 25px;
+    overflow-y: hidden;
+  }
+}

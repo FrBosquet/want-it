@@ -1,10 +1,10 @@
+require('dotenv').load();
 const path = require('path');
 const favicon = require('serve-favicon');
 const index = require('./routes/index');
-
+const cors = require('cors');
 const app = require('express')();
 
-const cors = require('cors');
 const whitelist = [
     'http://localhost:4200',
 ];
@@ -17,12 +17,9 @@ const corsOptions = {
 };
 app.use(cors(corsOptions));
 
-require('dotenv').load();
 require('./config/express')(app);
 require('./config/passport')(app);
 require('./routes/index')(app);
-
-
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

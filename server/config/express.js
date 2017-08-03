@@ -21,12 +21,11 @@ module.exports = (app) => {
   app.use(cookieParser());
   app.use(express.static(rootPath+'public'));
   app.use(session({
-    secret: "vgadklgalkhadñjhadñkadhjklda",
+    secret: "wantit",
     resave: true,
     saveUninitialized: true,
     store: new MongoStore( {
-      mongooseConnection: mongoose.connection,
-      ttl: 24*3600
+      mongooseConnection: mongoose.connection
     })
   }));
   app.use(flash());

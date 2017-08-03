@@ -5,7 +5,8 @@
     </h1>
     <nav class="menu">
       <app-button [label]="'home'" (click)='enroute("home")'></app-button>
-      <app-button [label]="'session'" (click)='enroute("login")'></app-button>
+      <app-button *ngIf='!session.user' [label]="'login'" (click)='enroute("login")'></app-button>
+      <app-button *ngIf='session.user' [label]="'profile'" (click)='enroute("profile")'></app-button>
     </nav>
   </div>
 </header>

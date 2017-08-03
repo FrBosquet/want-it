@@ -1,0 +1,10 @@
+@import '../../variables.scss';
+
+.wish-container{
+  @include flexcontainer(center);
+  flex-wrap: wrap;
+
+  app-wish-card{
+    width: 25%;
+  }
+}

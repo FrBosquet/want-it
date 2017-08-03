@@ -109,7 +109,7 @@ const logout = ( req, res, next ) => {
 const getuser = ( req, res, next ) => {
   res.status(200).json({
     message: 'Request for the current logged user',
-    user: req.user
+    user: req.user || undefined
   });
 }
 

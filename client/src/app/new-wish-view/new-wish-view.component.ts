@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgZone } from '@angular/core';
 
 @Component({
   selector: 'app-new-wish-view',
@@ -6,10 +6,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./new-wish-view.component.scss']
 })
 export class NewWishViewComponent implements OnInit {
+  selectedBrand:Object;
+  pepito: string = 'Pepito';
 
-  constructor() { }
+  constructor(private zone: NgZone) {
+    this.selectedBrand = undefined;
+  }
 
   ngOnInit() {
   }
 
+  selectBrand(brand:Object){
+    console.log(this.zone);
+    this.selectedBrand = brand;
+    this.pepito =  'Juanito';
+    console.log({brand, selectedbrand: this.selectedBrand});
+  }
 }

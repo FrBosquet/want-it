@@ -2,6 +2,6 @@
   <h3>Select a brand</h3>
   <input type="text" name="brandName" value="" (ngModelChange)="change($event)" [(ngModel)]="brandName">
   <div class="brand-container">
-    <app-brand-card *ngFor='let brand of visibleBrands' [brand]='brand'></app-brand-card>
+    <app-brand-card *ngFor='let brand of visibleBrands' (click)="select(brand)" [brand]='brand'></app-brand-card>
   </div>
 </div>

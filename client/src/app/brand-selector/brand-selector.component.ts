@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { RequestService } from '../services/request.service';
 
 @Component({
@@ -7,6 +7,7 @@ import { RequestService } from '../services/request.service';
   styleUrls: ['./brand-selector.component.scss']
 })
 export class BrandSelectorComponent implements OnInit {
+  @Output() onSelectBrand = new EventEmitter();
   brandName: string;
   brandList: Object[];
   visibleBrands: Object[];
@@ -29,4 +30,7 @@ export class BrandSelectorComponent implements OnInit {
       .slice(0,this.maxVisibleBrands)
   }
 
+  select(brand:Object){
+    this.onSelectBrand.emit(brand);
+  }
 }

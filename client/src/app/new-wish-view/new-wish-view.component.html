@@ -1,5 +1,7 @@
 <section>
   <h1>New wish</h1>
   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-  <app-brand-selector></app-brand-selector>
+  <h3>Selected : <strong *ngIf="selectedBrand">{{selectedBrand.name}}</strong></h3>
+  <app-brand-selector (onSelectBrand)="selectBrand($event)" *ngIf="!selectedBrand"></app-brand-selector>
+  <app-product-selector #productSelector *ngIf="selectedBrand"></app-product-selector>
 </section>

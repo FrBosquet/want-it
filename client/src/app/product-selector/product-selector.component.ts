@@ -6,7 +6,7 @@ import { RequestService } from '../services/request.service';
   templateUrl: './product-selector.component.html',
   styleUrls: ['./product-selector.component.scss']
 })
-export class BrandSelectorComponent {
+export class ProductSelectorComponent {
   productName: string;
   productList: Object[];
   visibleProduct: Object[];

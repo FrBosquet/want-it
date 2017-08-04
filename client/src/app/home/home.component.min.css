@@ -1,1 +1,1 @@
-.wish-container{display:flex;justify-content:center;align-items:center;flex-wrap:wrap}.wish-container app-wish-card{width:25%}
+.wish-container{display:flex;justify-content:flex-start;align-items:center;flex-wrap:wrap}.wish-container app-wish-card,.wish-container app-post-card{width:20%}

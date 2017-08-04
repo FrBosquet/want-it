@@ -14,6 +14,7 @@ import { LoginViewComponent } from './login-view/login-view.component';
 import { RequestService } from './services/request.service';
 import { SessionService } from './services/session.service';
 import { WishCardComponent } from './wish-card/wish-card.component';
+import { PostCardComponent } from './post-card/post-card.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -29,7 +30,8 @@ const routes: Routes = [
     AboutComponent,
     ButtonComponent,
     LoginViewComponent,
-    WishCardComponent
+    WishCardComponent,
+    PostCardComponent
   ],
   imports: [
     FormsModule,

@@ -9,6 +9,7 @@ import { RequestService } from '../services/request.service';
 })
 export class HomeComponent implements OnInit {
   wishes : Object[];
+  posts : Object[];
 
   constructor(private request: RequestService) { }
 
@@ -17,6 +18,11 @@ export class HomeComponent implements OnInit {
       .subscribe(res => {
         console.log(res.wishes)
         this.wishes = res.wishes;
+      });
+    this.request.get('/post')
+      .subscribe(res => {
+        console.log(res.posts)
+        this.posts = res.posts;
       });
   }
 

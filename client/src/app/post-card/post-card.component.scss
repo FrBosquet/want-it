@@ -1,6 +1,6 @@
 @import '../../variables.scss';
 
-.wish-card{
+.post-card{
   @include dropshadow;
   margin: 10px;
 
@@ -13,5 +13,6 @@
     height: 25px;
     overflow-y: hidden;
     text-align: left;
+    margin: auto 0px;
   }
 }

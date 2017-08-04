@@ -8,10 +8,12 @@ import { RequestService } from '../services/request.service';
 })
 export class BrandSelectorComponent implements OnInit {
   @Output() onSelectBrand = new EventEmitter();
+  @Output() onRequestBrandModal = new EventEmitter();
   brandName: string;
   brandList: Object[];
   visibleBrands: Object[];
   maxVisibleBrands: number = 9;
+
   constructor(private request: RequestService) { }
 
   ngOnInit() {
@@ -20,6 +22,10 @@ export class BrandSelectorComponent implements OnInit {
         this.brandList = res.brands;
         this.visibleBrands = this.brandList.slice(0,this.maxVisibleBrands);
       })
+  }
+
+  requestBrandModal(){
+    this.onRequestBrandModal.emit(true);
   }
 
   change(event){

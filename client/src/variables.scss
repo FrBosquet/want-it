@@ -2,7 +2,7 @@ $col-primary:     #333;
 $col-secondary:   #888;
 $col-terciary:    #CCC;
 $col-bg:          #F9F9F9;
-$col-detail:      #741583;
+$col-detail:      #851479;
 
 $mea-pagewidth: 1280px;
 
@@ -31,6 +31,28 @@ $mea-pagewidth: 1280px;
   box-shadow: 0px 5px 5px 0px $col-secondary;
   margin-bottom: 10px;
   border: 1px solid $col-terciary;
+}
+
+@mixin littlecard{
+  @include flexcontainer(center);
+  flex-direction: column;
+  width: calc( 100% - 5px);
+  height:140px;
+
+
+  img{
+    transition: transform 0.5s;
+    cursor: pointer;
+    max-width: 90%;
+    margin: 0 auto;
+  }
+
+  img:hover{
+    transform: scale(1.2);
+  }
+  h4{
+    text-align: center;
+  }
 }
 
 @mixin innershadow {

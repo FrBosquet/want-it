@@ -1,0 +1,1 @@
+.wrapper{box-shadow:inset 0px 2px 10px 2px #888;margin-bottom:10px;border:1px solid #CCC;border-radius:2px;width:80%;margin:15px auto;padding:15px}.wrapper .edition-container{display:flex;justify-content:flex-start;align-items:center;flex-wrap:wrap;padding:15px}.wrapper .edition-container app-edition-card{width:calc((100% - 30px) / 5)}

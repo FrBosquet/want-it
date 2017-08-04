@@ -3,5 +3,6 @@
   <input type="text" name="brandName" value="" (ngModelChange)="change($event)" [(ngModel)]="brandName">
   <div class="brand-container">
     <app-brand-card *ngFor='let brand of visibleBrands' (click)="select(brand)" [brand]='brand'></app-brand-card>
+    <app-brand-card (click)="requestBrandModal()" [brand]='{name:"New Brand"}'></app-brand-card>
   </div>
 </div>

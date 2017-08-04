@@ -21,6 +21,9 @@ import { BrandSelectorComponent } from './brand-selector/brand-selector.componen
 import { BrandCardComponent } from './brand-card/brand-card.component';
 import { ProductSelectorComponent } from './product-selector/product-selector.component';
 import { ProductCardComponent } from './product-card/product-card.component';
+import { EditionSelectorComponent } from './edition-selector/edition-selector.component';
+import { EditionCardComponent } from './edition-card/edition-card.component';
+import { NewBrandModalComponent } from './new-brand-modal/new-brand-modal.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -46,6 +49,9 @@ const routes: Routes = [
     BrandCardComponent,
     ProductSelectorComponent,
     ProductCardComponent,
+    EditionSelectorComponent,
+    EditionCardComponent,
+    NewBrandModalComponent,
   ],
   imports: [
     FormsModule,

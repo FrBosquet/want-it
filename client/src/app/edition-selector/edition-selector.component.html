@@ -1,0 +1,7 @@
+<div class='wrapper'>
+  <h3>Select a edition</h3>
+  <input type="text" name="editionName" value="" (ngModelChange)="change($event)" [(ngModel)]="editionName">
+  <div class="edition-container">
+    <app-edition-card *ngFor='let edition of visibleEdition' (click)="select(edition)" [edition]='edition'></app-edition-card>
+  </div>
+</div>

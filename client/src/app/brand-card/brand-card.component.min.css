@@ -1,1 +1,1 @@
-.brand-card{display:flex;justify-content:center;align-items:center;flex-direction:column;width:calc( 100% - 5px);height:140px}.brand-card .img{max-width:90%;margin:0 auto}.brand-card h4{text-align:center}
+.brand-card{display:flex;justify-content:center;align-items:center;flex-direction:column;width:calc( 100% - 5px);height:140px}.brand-card img{transition:transform 0.5s;cursor:pointer;max-width:90%;margin:0 auto}.brand-card img:hover{transform:scale(1.2)}.brand-card h4{text-align:center}

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { RequestService } from '../services/request.service';
 
 @Component({
@@ -7,19 +7,13 @@ import { RequestService } from '../services/request.service';
   styleUrls: ['./product-selector.component.scss']
 })
 export class ProductSelectorComponent {
+  @Input() productList: Object[];
+  @Input() visibleProduct: Object[];
+  @Output() onSelectProduct = new EventEmitter();
   productName: string;
-  productList: Object[];
-  visibleProduct: Object[];
   maxVisibleProducts: number = 9;
-  constructor(private request: RequestService) { }
 
-  setBrand(brandId: string) {
-    this.request.get(`/product/brand/${brandId}`)
-      .subscribe(res =>{
-        this.productList = res.products;
-        this.visibleProduct = this.productList.slice(0,this.maxVisibleProducts);
-      })
-  }
+  constructor(private request: RequestService) { }
 
   change(event){
     this.visibleProduct = this.productList
@@ -27,6 +21,10 @@ export class ProductSelectorComponent {
         return (new RegExp(event, 'i')).test(elm['name']);
       })
       .slice(0,this.maxVisibleProducts)
+      console.log(this.visibleProduct);
   }
 
+  select(product: Object){
+    this.onSelectProduct.emit(product);
+  }
 }

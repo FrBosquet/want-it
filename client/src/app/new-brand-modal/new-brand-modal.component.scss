@@ -1,0 +1,32 @@
+@import '../../variables.scss';
+
+.occluder{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: $col-primary;
+  opacity: 0.5;
+  z-index: 100;
+}
+
+.wrapper{
+  @include flexcontainer(center);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 101;
+
+  .modal{
+    @include dropshadow;
+    background-color: $col-bg;
+    width: 400px;
+    // height: 600px;
+    padding: 30px;
+    pointer-events: all;
+  }
+}

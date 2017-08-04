@@ -3,3 +3,17 @@
 .wrapper{
   @include innershadow;
 }
+
+.selection{
+  .backbutton{
+    display: inline-block;
+    cursor: pointer;
+    transition: opacity 0.5s;
+    opacity: 0.2;
+
+    &:hover{
+      opacity: 1;
+
+    }
+  }
+}

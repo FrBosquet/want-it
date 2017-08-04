@@ -6,6 +6,7 @@
     <nav class="menu">
       <app-button [label]="'home'" (click)='enroute("home")'></app-button>
       <app-button *ngIf='!session.user' [label]="'login'" (click)='enroute("login")'></app-button>
+      <app-button *ngIf='session.user' [label]="'new wish'" (click)='enroute("new-wish")'></app-button>
       <app-button *ngIf='session.user' [label]="'profile'" (click)='enroute("profile")'></app-button>
     </nav>
   </div>

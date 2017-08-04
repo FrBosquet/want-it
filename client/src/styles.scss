@@ -20,14 +20,15 @@ p{
 
 label, input{
   display: block;
-  width: 100%;
+  width: calc(100% - 30px);
+  margin: auto;
   margin-top: 10px;
 }
 
 input[type="text"], input[type="password"]{
   padding: 3px;
   border: 1px solid $col-secondary;
-  border-radius: 5px;
+  border-radius: 3px;
 }
 
 .user-bullet{

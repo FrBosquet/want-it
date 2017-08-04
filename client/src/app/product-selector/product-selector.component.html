@@ -1,0 +1,7 @@
+<div class='wrapper'>
+  <h3>Select a product</h3>
+  <input type="text" name="productName" value="" (ngModelChange)="change($event)" [(ngModel)]="productName">
+  <div class="product-container">
+    <app-product-card *ngFor='let product of visibleProducts' [product]='product'></app-product-card>
+  </div>
+</div>

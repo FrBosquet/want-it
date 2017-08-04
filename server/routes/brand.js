@@ -2,10 +2,12 @@ const express = require('express');
 const router = express.Router();
 const badRequest = require('./badRequest');
 const {
-  getAll, getOne, create, edit, remove
+  getAll, search, getOne, create, edit, remove
 } = require('../api/brand/brand.controller');
 
 router.get('/', getAll);
+
+router.get('/search/:term', search);
 
 router.get('/create', badRequest(405, 'Use this route with POST'));
 router.post('/create', create);

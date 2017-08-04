@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { SessionService } from './services/session.service';
 
 @Component({
@@ -7,7 +8,7 @@ import { SessionService } from './services/session.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  constructor(private session:SessionService){
+  constructor(private router:Router, private session:SessionService){
 
   };
 
@@ -17,5 +18,6 @@ export class AppComponent {
 
   logout(){
     this.session.unsetSession();
+    this.router.navigate(['/']);
   }
 }

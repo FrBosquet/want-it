@@ -1,0 +1,1 @@
+.brand-card{display:flex;justify-content:center;align-items:center;flex-direction:column;width:calc( 100% - 5px);height:140px}.brand-card .img{max-width:90%;margin:0 auto}.brand-card h4{text-align:center}

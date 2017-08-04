@@ -35,6 +35,26 @@ const getOne = (req, res, next) =>{
     }));
 }
 
+const search = (req, res, next) => {
+  const term = req.params.term;
+  Brand.find({ 'name' : new RegExp(term,'i')})
+    .sort({_id : -1})
+    .exec()
+    .then(brands=>{
+      res.status(200).json({
+        user: req.user || 'not loged',
+        message: 'Request all brands',
+        term,
+        brands
+      })
+    })
+    .catch(err=>res.status(400).json({
+      user: req.user || 'not loged',
+      message: 'Error requesting brands',
+      err
+    }));
+}
+
 const create = (req, res, next) =>{
   const { name, country, fullName } = req.body;
   if( !name || !country || !fullName ){
@@ -102,6 +122,7 @@ const remove = (req, res, next) =>{
 module.exports = {
   getAll,
   getOne,
+  search,
   create,
   edit,
   remove

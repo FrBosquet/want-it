@@ -1,0 +1,19 @@
+@import '../../variables.scss';
+
+.wrapper{
+  @include innershadow;
+  border-radius: 2px;
+  width: 80%;
+  margin: 15px auto;
+  padding: 15px;
+
+  .brand-container{
+    @include flexcontainer(flex-start);
+    flex-wrap: wrap;
+    padding: 15px;
+
+    app-brand-card{
+      width: calc((100% - 30px) / 5);
+    }
+  }
+}

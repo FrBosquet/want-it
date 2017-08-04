@@ -2,7 +2,7 @@ $col-primary:     #333;
 $col-secondary:   #888;
 $col-terciary:    #CCC;
 $col-bg:          #F9F9F9;
-$col-detail:      #558cba;
+$col-detail:      #741583;
 
 $mea-pagewidth: 1280px;
 
@@ -29,6 +29,12 @@ $mea-pagewidth: 1280px;
 
 @mixin dropshadow {
   box-shadow: 0px 5px 5px 0px $col-secondary;
+  margin-bottom: 10px;
+  border: 1px solid $col-terciary;
+}
+
+@mixin innershadow {
+  box-shadow: inset 0px 2px 10px 2px $col-secondary;
   margin-bottom: 10px;
   border: 1px solid $col-terciary;
 }

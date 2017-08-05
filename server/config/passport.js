@@ -41,42 +41,6 @@ module.exports = ( app ) => {
       .catch( err=> next(err))
   }));
 
-  passport.use(new FbStrategy({
-    clientID:process.env.FACEBOOK_CLIENT_ID,
-    clientSecret:process.env.FACEBOOK_CLIENT_SECRET,
-    callbackURL: '/user/facebook/callback'
-  }, (accessToken, refreshToken, profile, next)=> {
-    User.findOne({facebookId: profile.id}, (err, user)=>{
-      if(err){
-        // return next(err);
-        res.status(400).json({
-          message: 'Something went wrong',
-          err
-        })
-      }
-      if(user){
-        console.log(profile);
-        // return next(null, user);
-        res.status(200).json({
-          message: 'The user already exists',
-          user
-        })
-      }
-
-      const newUser = new User({
-        name: profile.displayName,
-        facebookID: profile.id
-      });
-
-      newUser.save()
-        .then(user=>res.status(201).json({
-          message: 'Created a new user',
-          user
-        }))
-        .catch((err)=>next(err));
-    })
-  }));
-
   app.use(passport.initialize());
   app.use(passport.session());
 

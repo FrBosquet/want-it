@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import jsonp from 'jsonp';
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class RequestService {
@@ -16,13 +17,14 @@ export class RequestService {
     constructor( private http:Http ) { }
 
     get( query: String) {
-      return this.http.get(`http://localhost:3000${query}`, this.options)
+      console.log(`${environment.apiEndpoint}${query}`);
+      return this.http.get(`${environment.apiEndpoint}${query}`, this.options)
       .map((res:Response) => res.json());
 
     }
 
     post( query: String, data: Object) {
-      return this.http.post(`http://localhost:3000${query}`, data, this.options)
+      return this.http.post(`${environment.apiEndpoint}${query}`, data, this.options)
         .map((res:Response) => res.json());
     }
 

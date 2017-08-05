@@ -2,6 +2,25 @@
 
 .wrapper{
   @include innershadow;
+  width: calc(100% - 30px);
+  margin: 0 auto;
+  height: 400px;
+  overflow: hidden;
+
+  .runner{
+    transition: transform 0.5s;
+    transform: translateY(-15px);
+
+    &.product{
+      transform: translateY(-460px);
+    }
+    &.edition{
+      transform: translateY(-920px);
+    }
+    &.finished{
+      transform: translateY(-1380px);
+    }
+  }
 }
 
 .selection{

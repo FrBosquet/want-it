@@ -16,10 +16,6 @@ export class NewWishViewComponent implements OnInit {
   productEditions:Object[] = [];
   selectedEdition:Object;
 
-  brandModal: boolean = false;
-  productModal: boolean = false;
-  editionModal: boolean = false;
-
   constructor( private router: Router, private request: RequestService, private session:SessionService ) {
     this.selectedBrand = undefined;
   }
@@ -29,6 +25,8 @@ export class NewWishViewComponent implements OnInit {
 
   selectBrand(brand:Object){
     this.selectedBrand = brand;
+    this.brandProducts = [];
+
     this.request.get(`/product/brand/${brand['_id']}`)
       .subscribe(res=>{
         this.brandProducts = res.products;
@@ -37,6 +35,8 @@ export class NewWishViewComponent implements OnInit {
 
   selectProduct(product: Object){
     this.selectedProduct = product;
+    this.productEditions = [];
+
     this.request.get(`/edition/product/${product['_id']}`)
       .subscribe(res=>{
         this.productEditions = res.editions;
@@ -45,14 +45,6 @@ export class NewWishViewComponent implements OnInit {
 
   selectEdition(edition: Object){
     this.selectedEdition = edition;
-  }
-
-  showBrandModal(event){
-    this.brandModal = true;
-  }
-
-  hideBrandModal(event){
-    this.brandModal = false;
   }
 
   createWish(){
@@ -71,10 +63,8 @@ export class NewWishViewComponent implements OnInit {
       this.selectedEdition = undefined;
     }else if(this.selectedProduct){
       this.selectedProduct = undefined;
-      this.productEditions = [];
     }else{
       this.selectedBrand = undefined;
-      this.brandProducts = [];
     }
   }
 }

@@ -24,6 +24,7 @@ import { ProductCardComponent } from './product-card/product-card.component';
 import { EditionSelectorComponent } from './edition-selector/edition-selector.component';
 import { EditionCardComponent } from './edition-card/edition-card.component';
 import { NewBrandModalComponent } from './new-brand-modal/new-brand-modal.component';
+import { NewProductModalComponent } from './new-product-modal/new-product-modal.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -52,6 +53,7 @@ const routes: Routes = [
     EditionSelectorComponent,
     EditionCardComponent,
     NewBrandModalComponent,
+    NewProductModalComponent,
   ],
   imports: [
     FormsModule,

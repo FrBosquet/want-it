@@ -8,7 +8,6 @@ import { RequestService } from '../services/request.service';
 })
 export class BrandSelectorComponent implements OnInit {
   @Output() onSelectBrand = new EventEmitter();
-  @Output() onRequestBrandModal = new EventEmitter();
 
   brandModal: boolean = false;
   brandName: string;
@@ -32,10 +31,6 @@ export class BrandSelectorComponent implements OnInit {
         this.brandList = res.brands;
         this.visibleBrands = this.brandList.slice(0,this.maxVisibleBrands);
       })
-  }
-
-  requestBrandModal(){
-    this.onRequestBrandModal.emit(true);
   }
 
   change(event){

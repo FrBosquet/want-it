@@ -8,28 +8,27 @@
     <strong *ngIf="selectedEdition">{{selectedEdition.name}}</strong>
     <span class="backbutton" *ngIf="selectedBrand" (click)="reset()"> - back</span>
   </h3>
-  <app-brand-selector
-    (onSelectBrand)="selectBrand($event)"
-    (onRequestBrandModal)="showBrandModal($event)"
-    [hidden]="selectedBrand">
-  </app-brand-selector>
-  <app-product-selector
-    (onSelectProduct)="selectProduct($event)"
-    [hidden]="!selectedBrand || selectedProduct"
-    [productList]="brandProducts"
-    [visibleProduct]="brandProducts">
-  </app-product-selector>
-  <app-edition-selector
-    (onSelectEdition)="selectEdition($event)"
-    [hidden]="!selectedProduct || selectedEdition"
-    [editionList]="productEditions"
-    [visibleEdition]="productEditions">
-  </app-edition-selector>
-  <div class="options" *ngIf='selectedEdition'>
-    <h4>want it</h4>
-    <h4>have it</h4>
-    <h4>had it</h4>
-    <app-button (click)="createWish()" [label]="'Make a wish'"></app-button>
+  <div class="wrapper">
+    <div [ngClass]="{'runner': true, 'product': selectedBrand}">
+      <app-brand-selector
+        (onSelectBrand)="selectBrand($event)">
+      </app-brand-selector>
+      <app-product-selector
+        (onSelectProduct)="selectProduct($event)"
+        [productList]="brandProducts"
+        [visibleProduct]="brandProducts">
+      </app-product-selector>
+      <app-edition-selector
+        (onSelectEdition)="selectEdition($event)"
+        [editionList]="productEditions"
+        [visibleEdition]="productEditions">
+      </app-edition-selector>
+      <div class="options">
+        <h4>want it</h4>
+        <h4>have it</h4>
+        <h4>had it</h4>
+      <app-button (click)="createWish()" [label]="'Make a wish'"></app-button>
+    </div>
+    </div>
   </div>
-  <app-new-brand-modal *ngIf="brandModal" (onClickOutside)="hideBrandModal()"></app-new-brand-modal>
 </section>

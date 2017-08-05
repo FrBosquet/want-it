@@ -50,8 +50,12 @@ $mea-pagewidth: 1280px;
   img:hover{
     transform: scale(1.2);
   }
-  h4{
+  h6{
     text-align: center;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    max-width: 80%;
   }
 }
 

@@ -9,10 +9,20 @@ import { RequestService } from '../services/request.service';
 export class BrandSelectorComponent implements OnInit {
   @Output() onSelectBrand = new EventEmitter();
   @Output() onRequestBrandModal = new EventEmitter();
+
+  brandModal: boolean = false;
   brandName: string;
   brandList: Object[];
   visibleBrands: Object[];
   maxVisibleBrands: number = 9;
+
+  showBrandModal(event){
+    this.brandModal = true;
+  }
+
+  hideBrandModal(event){
+    this.brandModal = false;
+  }
 
   constructor(private request: RequestService) { }
 
@@ -38,5 +48,18 @@ export class BrandSelectorComponent implements OnInit {
 
   select(brand:Object){
     this.onSelectBrand.emit(brand);
+  }
+
+  newBrand(event: Object){
+    console.log("Received",event);
+    if(event['name']){
+      console.log('This brand exist');
+      this.brandName = event['name'];
+      this.change(event['name']);
+    }else{
+      this.brandList.push(event['brand']);
+      this.brandName = event['brand']['name'];
+      this.change(event['brand']['name']);
+    }
   }
 }

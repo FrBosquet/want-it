@@ -12,7 +12,7 @@ export class NewBrandModalComponent implements OnInit {
 
   shortName: string;
   longName: string;
-  country:string;
+  country:  string;
 
   wikiTitle: string = "This is a wikipedia search!";
   wikiDesc: string = "You could find some nice reference here";
@@ -49,7 +49,13 @@ export class NewBrandModalComponent implements OnInit {
     console.log(this.shortName, this.longName, this.country);
 
     if(this.shortName){
-      
+      this.request.post('/brand/name',{term: this.shortName})
+        .subscribe(res =>{
+            if(res.brands.length != 0){
+
+            }
+          }
+        )
     }
 
   }

@@ -20,7 +20,7 @@ export class NewWishViewComponent implements OnInit {
   productModal: boolean = false;
   editionModal: boolean = false;
 
-  constructor(private router: Router, private request: RequestService, private session:SessionService, ) {
+  constructor( private router: Router, private request: RequestService, private session:SessionService ) {
     this.selectedBrand = undefined;
   }
 

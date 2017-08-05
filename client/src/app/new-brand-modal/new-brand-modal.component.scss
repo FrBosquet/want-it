@@ -23,10 +23,35 @@
 
   .modal{
     @include dropshadow;
+    @include flexcontainer(space-between);
     background-color: $col-bg;
-    width: 400px;
-    // height: 600px;
+    width: 600px;
     padding: 30px;
     pointer-events: all;
+
+    div{
+      width: 40%;
+    }
+
+    .wiki-suggest{
+      width: 20%;
+      overflow: hidden;;
+
+      h6{
+        cursor: pointer;
+        line-height: 15px;
+        margin: 2px;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+      }
+    }
+
+    .wiki-search{
+      p{
+        height: 100px;
+        overflow: hidden;
+      }
+    }
   }
 }

@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const badRequest = require('./badRequest');
 const {
-  getAll, search, getOne, create, edit, remove
+  getAll, search, getByName, getOne, create, edit, remove
 } = require('../api/brand/brand.controller');
 
 router.get('/', getAll);
@@ -11,6 +11,9 @@ router.get('/search/:term', search);
 
 router.get('/create', badRequest(405, 'Use this route with POST'));
 router.post('/create', create);
+
+router.get('/name', badRequest(405, 'Use this route with POST'));
+router.post('/name', getByName);
 
 router.put('/edit/:id', edit);
 router.get('/edit/:id', badRequest(405, 'Use this route with PUT'));

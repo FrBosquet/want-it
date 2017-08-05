@@ -55,6 +55,26 @@ const search = (req, res, next) => {
     }));
 }
 
+const getByName = (req, res, next) => {
+  const term = req.body.term;
+  console.log('search term', req.body);
+  Brand.find({ $or: [{'name' : term}, {'name':term.toLowerCase()}, {'name' : term.toUpperCase()}, {'name' : `${term.slice(0,1).toUpperCase()}${term.slice(1)}`}, {'name' : `${term.slice(0,1)}${term.slice(1).toLowerCase()}`}]})
+    .exec()
+    .then(brands=>{
+      res.status(200).json({
+        user: req.user || 'not loged',
+        message: 'Request a brand',
+        term,
+        brands
+      })
+    })
+    .catch(err=>res.status(400).json({
+      user: req.user || 'not loged',
+      message: 'Error requesting brands',
+      err
+    }));
+}
+
 const create = (req, res, next) =>{
   const { name, country, fullName } = req.body;
   if( !name || !country || !fullName ){
@@ -122,6 +142,7 @@ const remove = (req, res, next) =>{
 module.exports = {
   getAll,
   getOne,
+  getByName,
   search,
   create,
   edit,

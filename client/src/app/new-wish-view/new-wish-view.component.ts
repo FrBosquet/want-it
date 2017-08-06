@@ -16,11 +16,18 @@ export class NewWishViewComponent implements OnInit {
   productEditions:Object[] = [];
   selectedEdition:Object;
 
+  brandModal    : boolean = true;
+  productModal  : boolean = true;
+  editionModal  : boolean = true;
+
   constructor( private router: Router, private request: RequestService, private session:SessionService ) {
     this.selectedBrand = undefined;
   }
 
   ngOnInit() {
+    this.brandModal = false;
+    this.productModal = false;
+    this.editionModal = false;
   }
 
   selectBrand(brand:Object){
@@ -66,5 +73,11 @@ export class NewWishViewComponent implements OnInit {
     }else{
       this.selectedBrand = undefined;
     }
+
+    this.brandModal = false;
+    this.productModal = false;
+    this.editionModal = false;
+
+    console.log(this.brandModal,this.productModal, this.editionModal);
   }
 }

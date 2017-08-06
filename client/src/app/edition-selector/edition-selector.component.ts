@@ -9,7 +9,9 @@ import { RequestService } from '../services/request.service';
 export class EditionSelectorComponent {
   @Input() editionList: Object[];
   @Input() visibleEdition: Object[];
+  @Input() editionModal: boolean;
   @Output() onSelectEdition = new EventEmitter();
+
   editionName: string;
   maxVisibleEditions: number = 9;
 

@@ -8,8 +8,8 @@ import { RequestService } from '../services/request.service';
 })
 export class BrandSelectorComponent implements OnInit {
   @Output() onSelectBrand = new EventEmitter();
+  @Input() brandModal: boolean;
 
-  brandModal: boolean = false;
   brandName: string;
   brandList: Object[];
   visibleBrands: Object[];

@@ -24,33 +24,33 @@
   .modal{
     @include dropshadow;
     @include flexcontainer(space-between);
+    align-items: baseline;
     background-color: $col-bg;
     width: 600px;
     padding: 30px;
     pointer-events: all;
 
-    div{
-      width: 40%;
+    &>div{
+      width: 45%;
     }
 
-    .wiki-suggest{
-      width: 20%;
-      overflow: hidden;;
+    .tags{
 
-      h6{
-        cursor: pointer;
-        line-height: 15px;
-        margin: 2px;
-        white-space: nowrap;
-        text-overflow: ellipsis;
+      .tagArray{
+        margin: 0px;
+        margin-top: 15px;
+        @include flexcontainer(flex-start);
+        flex-wrap: wrap;
         overflow: hidden;
-      }
-    }
 
-    .wiki-search{
-      p{
-        height: 100px;
-        overflow: hidden;
+        .bullet{
+          background-color: $col-detail;
+          color: $col-bg;
+          margin: 8px 8px 0 0;
+          padding: 4px;
+
+          border-radius: 8px;
+        }
       }
     }
   }

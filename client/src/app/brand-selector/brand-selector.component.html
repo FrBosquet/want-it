@@ -6,4 +6,8 @@
     <app-brand-card (click)="showBrandModal()" [brand]='{name:"New Brand"}'></app-brand-card>
   </div>
 </div>
-<app-new-brand-modal *ngIf="brandModal" (onClickOutside)="hideBrandModal()" (onFinish)="newBrand($event)"></app-new-brand-modal>
+<app-new-brand-modal
+  *ngIf="brandModal"
+  (onClickOutside)="hideBrandModal()"
+  (onFinish)="newBrand($event)">
+</app-new-brand-modal>

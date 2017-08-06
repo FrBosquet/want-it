@@ -9,9 +9,10 @@ import { RequestService } from '../services/request.service';
 export class ProductSelectorComponent {
   @Input() productList: Object[];
   @Input() visibleProduct: Object[];
+  @Input() brandId: string;
+  @Input() productModal: boolean;
   @Output() onSelectProduct = new EventEmitter();
 
-  productModal: boolean = false;
   productName: string;
   maxVisibleProducts: number = 9;
 

@@ -3,22 +3,22 @@
   <div class="modal">
 
     <div class="form">
-      <label for="shortname">Short name</label>
-      <input type="text" name="shortname" [(ngModel)]="shortName" (change)="wikiRef()">
-      <label for="longname">Long name</label>
-      <input type="text" name="longname"  [(ngModel)]="longName">
-      <label for="country">Country</label>
-      <input type="text" name="country"  [(ngModel)]="country">
-      <app-button [label]="'create'" (click)="createBrand()"></app-button>
+      <label for="name">Name</label>
+      <input type="text" name="name" [(ngModel)]="name">
+      <label for="ref">Reference code</label>
+      <input type="text" name="ref"  [(ngModel)]="ref">
+      <label for="tags">Tags (Separated by commas)</label>
+      <textarea name="tags"  [(ngModel)]="tags" rows="5" cols="80" (keyup)="updateTags()">
+
+      </textarea>
+      <app-button [label]="'create'" (click)="createProduct()"></app-button>
     </div>
 
-    <div class="wiki-suggest">
-      <h6 *ngFor="let sugest of wikiSugestion, let i=index" (click)="pickSuggestion(i)">{{sugest}}</h6>
-    </div>
-
-    <div class="wiki-search">
-      <h5>{{wikiTitle}}</h5>
-      <p>{{wikiDesc}}</p>
+    <div class="tags">
+      <h5>Tags</h5>
+      <div class="tagArray">
+        <span class='bullet' *ngFor='let tag of tagArray'>{{tag}}</span>
+      </div>
     </div>
 
   </div>

@@ -1,6 +1,5 @@
-import { Component, OnInit, Output, EventEmitter, NgZone } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, NgZone } from '@angular/core';
 import { RequestService } from '../services/request.service';
-
 
 @Component({
   selector: 'app-new-product-modal',
@@ -10,70 +9,51 @@ import { RequestService } from '../services/request.service';
 export class NewProductModalComponent implements OnInit {
   @Output() onClickOutside = new EventEmitter();
   @Output() onFinish = new EventEmitter();
+  @Input() brandId;
 
-  shortName: string;
-  longName: string;
-  country:  string;
+  name: string;
+  ref: string;
+  tags:  string;
 
-  wikiTitle: string = "This is a wikipedia search!";
-  wikiDesc: string = "You could find some nice reference here";
-  wikiSugestion: string[];
-  wikiDescriptions: string[];
+  tagArray: string[];
 
   constructor(private request: RequestService, private zone:NgZone) { }
 
   ngOnInit() {
   }
 
-  wikiRef(){
-    this.wikiTitle = "Searching...";
-    this.request.wiki(this.shortName, (err, data)=>{
-      this.wikiSugestion = data[1];
-      this.wikiDescriptions = data[2];
-      console.log("wikisug",this.wikiSugestion);
-      this.pickSuggestion(0);
-      this.zone.run(()=>true);
-    });
+  updateTags(event){
+    this.tagArray =
+      this.tags
+        .split(',')
+        .map( e => e.replace(/^\s+|\s+$/g, ''))
+        .filter(e => e !== '')
+        .map( e => [e[0].toUpperCase(),e.slice(1).toLowerCase()].join(''));
   }
 
-  pickSuggestion(idx){
-    console.log(idx);
-    let reg = new RegExp('refer','i');
-    console.log(reg);
-    console.log('pick',idx)
-    if(reg.test(this.wikiSugestion[idx])){
-      this.pickSuggestion(idx+1);
-    }else{
-      this.wikiTitle = this.wikiSugestion[idx];
-      this.shortName = this.wikiTitle;
-      this.wikiDesc = this.wikiDescriptions[idx];
-      const prob = this.wikiDesc.substring(0, this.wikiDesc.indexOf('is')-1);
-      this.longName = prob;
-    }
-  }
+  createProduct(){
+    console.log(this.name, this.ref, this.tagArray, this.brandId);
+    if(!this.name || !this.ref || !this.tagArray || this.tagArray.length === 0) return;
 
-  createBrand(){
-    if(!this.shortName || !this.country || !this.longName) return;
-
-    this.request.post('/product/name',{term: this.shortName})
-      .subscribe(res =>{
-          if(res.products.length != 0){
-            console.log('This product already exists!');
-            this.onFinish.emit({name: this.shortName});
-            this.onClickOutside.emit();
-          }else{
-            this.request.post('/product/create',{
-              name: this.shortName,
-              fullName: this.longName,
-              country: this.country
-            })
-            .subscribe(res=>{
-              this.onFinish.emit({product:res.product});
-              this.onClickOutside.emit();
-            });
-          }
+    this.request.post('/product/name', {name:this.name, brandId: this.brandId})
+      .subscribe(res => {
+        if( res.product.length !== 0){
+          console.log("This product already exists");
+          this.onFinish.emit({name: this.name});
+          this.onClickOutside.emit();
+          return;
         }
-      )
+
+        this.request.post('/product/create', {
+          brandId: this.brandId,
+          name: this.name,
+          ref: this.ref,
+          tags: this.tagArray
+        }).subscribe(res => {
+          this.onFinish.emit({product:res.product});
+          this.onClickOutside.emit();
+        })
+      });
   }
 
   hideProductModal(){

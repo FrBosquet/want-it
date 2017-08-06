@@ -9,19 +9,23 @@
     <span class="backbutton" *ngIf="selectedBrand" (click)="reset()"> - back</span>
   </h3>
   <div class="wrapper">
-    <div [ngClass]="{'runner': true, 'product': selectedBrand}">
+    <div [ngClass]="{'runner': true, 'product': selectedBrand, 'edition': selectedProduct}">
       <app-brand-selector
-        (onSelectBrand)="selectBrand($event)">
+        (onSelectBrand)="selectBrand($event)"
+        [brandModal]="brandModal">
       </app-brand-selector>
       <app-product-selector
         (onSelectProduct)="selectProduct($event)"
+        [brandId]="selectedBrand ? selectedBrand._id : undefined"
         [productList]="brandProducts"
-        [visibleProduct]="brandProducts">
+        [visibleProduct]="brandProducts"
+        [productModal]="productModal">
       </app-product-selector>
       <app-edition-selector
         (onSelectEdition)="selectEdition($event)"
         [editionList]="productEditions"
-        [visibleEdition]="productEditions">
+        [visibleEdition]="productEditions"
+        [editionModal]="editionModal">
       </app-edition-selector>
       <div class="options">
         <h4>want it</h4>

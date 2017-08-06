@@ -6,4 +6,9 @@
     <app-product-card (click)="showProductModal()" [product]='{name:"New Product"}'></app-product-card>
   </div>
 </div>
-<app-new-product-modal *ngIf="productModal" (onClickOutside)="hideProductModal()" (onFinish)="newProduct($event)"></app-new-product-modal>
+<app-new-product-modal
+  *ngIf="productModal"
+  (onClickOutside)="hideProductModal()"
+  (onFinish)="newProduct($event)"
+  [brandId]="brandId">
+</app-new-product-modal>

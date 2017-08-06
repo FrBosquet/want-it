@@ -25,6 +25,7 @@ import { EditionSelectorComponent } from './edition-selector/edition-selector.co
 import { EditionCardComponent } from './edition-card/edition-card.component';
 import { NewBrandModalComponent } from './new-brand-modal/new-brand-modal.component';
 import { NewProductModalComponent } from './new-product-modal/new-product-modal.component';
+import { NewEditionModalComponent } from './new-edition-modal/new-edition-modal.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -54,6 +55,7 @@ const routes: Routes = [
     EditionCardComponent,
     NewBrandModalComponent,
     NewProductModalComponent,
+    NewEditionModalComponent,
   ],
   imports: [
     FormsModule,

@@ -37,6 +37,62 @@ const getByBrand = (req, res, next) => {
     }));
 }
 
+const getByName = (req, res, next) => {
+
+  const brandId = req.body.brandId;
+  const name = req.body.name;
+
+  if(!brandId || !name){
+    res.status(400).json({
+      user: req.user || 'not loged',
+      message: `Send brandId and name`
+    })
+    return;
+  }
+
+  Product.find(
+    {$and: [
+      {brandId},
+      {$or: [
+        {name: name},
+        {name: name.toUpperCase()},
+        {name: [name[0].toUpperCase(),name.slice(1).toLowerCase()].join('')},
+        {name: name.toLowerCase()},
+        ]
+      }
+    ]})
+    .exec()
+    .then(product=>{
+      res.status(200).json({
+        user: req.user || 'not loged',
+        message: 'Request all products',
+        product
+      })
+    })
+    .catch(err=>res.status(400).json({
+      user: req.user || 'not loged',
+      message: 'Error requesting products',
+      err
+    }));
+  //
+  // Product.find()
+  //   .exec()
+  //   .then(product => {
+  //     res.status(200).json({
+  //       user: req.user || 'not loged',
+  //       message: `Request all products of the brand`,
+  //       products
+  //     })
+  //   })
+  //   .catch(err => {
+  //     res.status(400).json({
+  //       user: req.user || 'not loged',
+  //       message: 'Error requesting product',
+  //       err
+  //     })
+  //   })
+}
+
 const getOne = (req, res, next) =>{
   Product.findById( req.params.id)
     .populate('brandId')
@@ -123,6 +179,7 @@ module.exports = {
   getAll,
   getByBrand,
   getOne,
+  getByName,
   create,
   edit,
   remove

@@ -3,5 +3,12 @@
   <input type="text" name="editionName" value="" (ngModelChange)="change($event)" [(ngModel)]="editionName">
   <div class="edition-container">
     <app-edition-card *ngFor='let edition of visibleEdition' (click)="select(edition)" [edition]='edition'></app-edition-card>
+    <app-edition-card (click)="showEditionModal()" [edition]='{name:"New Edition"}'></app-edition-card>
   </div>
 </div>
+<app-new-edition-modal
+  *ngIf="editionModal"
+  (onClickOutside)="hideEditionModal()"
+  (onFinish)="newEdition($event)"
+  [productId]="productId">
+</app-new-edition-modal>

@@ -27,7 +27,10 @@ const wishSchema = new mongoose.Schema({
     default: undefined
   },
   state: Number,
-  birthdayLock: Boolean,
+  birthdayLock: {
+    type: Boolean,
+    default: false
+  },
   amazonId: String
 }, {
   timestamps: {

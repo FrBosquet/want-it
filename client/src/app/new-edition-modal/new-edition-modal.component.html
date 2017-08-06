@@ -1,3 +1,25 @@
-<p>
-  new-edition-modal works!
-</p>
+<div class="occluder" (click)="hideEditionModal()"></div>
+<div class="wrapper">
+  <div class="modal">
+
+    <div class="form">
+      <label for="name">Name</label>
+      <input type="text" name="name" [(ngModel)]="name">
+      <label for="ref">Reference code</label>
+      <input type="text" name="ref"  [(ngModel)]="ref">
+      <label for="specs">Tags (Spec:Value. Separated by commas)</label>
+      <textarea name="specs"  [(ngModel)]="specs" rows="5" cols="80" (keyup)="updateSpecs()">
+
+      </textarea>
+      <app-button [label]="'create'" (click)="createEdition()"></app-button>
+    </div>
+
+    <div class="specs">
+      <h5>Specs</h5>
+      <div class="specArray">
+        <span class='spec' *ngFor='let spec of specArray'>{{spec}}</span>
+      </div>
+    </div>
+
+  </div>
+</div>

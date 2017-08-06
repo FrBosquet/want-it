@@ -9,7 +9,7 @@
     <span class="backbutton" *ngIf="selectedBrand" (click)="reset()"> - back</span>
   </h3>
   <div class="wrapper">
-    <div [ngClass]="{'runner': true, 'product': selectedBrand, 'edition': selectedProduct}">
+    <div [ngClass]="{'runner': true, 'product': selectedBrand, 'edition': selectedProduct, 'finished': selectedEdition}">
       <app-brand-selector
         (onSelectBrand)="selectBrand($event)"
         [brandModal]="brandModal">
@@ -23,16 +23,18 @@
       </app-product-selector>
       <app-edition-selector
         (onSelectEdition)="selectEdition($event)"
+        [productId]="selectedProduct ? selectedProduct._id : undefined"
         [editionList]="productEditions"
         [visibleEdition]="productEditions"
         [editionModal]="editionModal">
       </app-edition-selector>
       <div class="options">
-        <h4>want it</h4>
-        <h4>have it</h4>
-        <h4>had it</h4>
-      <app-button (click)="createWish()" [label]="'Make a wish'"></app-button>
-    </div>
+        <h4>State</h4>
+        <span [ngClass]="{'state-sel': true, 'state-choosen': state === 1}" (click)="setState(1)">I want it</span>
+        <span [ngClass]="{'state-sel': true, 'state-choosen': state === 2}" (click)="setState(2)">I have it</span>
+        <span [ngClass]="{'state-sel': true, 'state-choosen': state === 3}" (click)="setState(3)">I had it</span>
+        <app-button (click)="createWish()" [label]="'Make a wish'"></app-button>
+      </div>
     </div>
   </div>
 </section>

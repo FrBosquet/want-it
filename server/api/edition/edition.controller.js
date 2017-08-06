@@ -47,6 +47,44 @@ const getByProduct = (req, res, next) => {
     }));
 }
 
+const getByName = (req, res, next) => {
+  const productId = req.body.productId;
+  const name = req.body.name;
+
+  if(!productId || !name){
+    res.status(400).json({
+      user: req.user || 'not loged',
+      message: `Send productId and name`
+    })
+    return;
+  }
+
+  Edition.find(
+    {$and: [
+      {productId},
+      {$or: [
+        {name: name},
+        {name: name.toUpperCase()},
+        {name: [name[0].toUpperCase(),name.slice(1).toLowerCase()].join('')},
+        {name: name.toLowerCase()},
+        ]
+      }
+    ]})
+    .exec()
+    .then(edition=>{
+      res.status(200).json({
+        user: req.user || 'not loged',
+        message: 'Edition by name',
+        edition
+      })
+    })
+    .catch(err=>res.status(400).json({
+      user: req.user || 'not loged',
+      message: 'Error requesting edition',
+      err
+    }));
+}
+
 const getOne = (req, res, next) =>{
   Edition.findById( req.params.id)
     .populate({
@@ -144,6 +182,7 @@ module.exports = {
   getAll,
   getByProduct,
   getOne,
+  getByName,
   create,
   edit,
   remove

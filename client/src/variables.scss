@@ -88,3 +88,11 @@ $mea-pagewidth: 1280px;
 @mixin growingchild($grow) {
   flex-grow: $grow;
 }
+
+@mixin bullet {
+  background-color: $col-detail;
+  color: $col-bg;
+  margin: 8px 8px 0 0;
+  padding: 4px;
+  border-radius: 8px;
+}

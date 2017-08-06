@@ -2,7 +2,7 @@
 
 .wrapper{
   @include innershadow;
-  width: calc(100% - 30px);
+  width: calc(100% - 200px );
   margin: 0 auto;
   height: 400px;
   overflow: hidden;
@@ -24,6 +24,7 @@
 }
 
 .selection{
+  margin-left: 100px;
   .backbutton{
     display: inline-block;
     cursor: pointer;
@@ -33,6 +34,26 @@
     &:hover{
       opacity: 1;
 
+    }
+  }
+}
+
+.options{
+  box-sizing: border-box;
+  height: 400px;
+  padding: 30px;
+  margin: 30px;
+
+  .state-sel{
+    @include bullet;
+    cursor: pointer;
+    padding: 12px;
+    transition: all 0.5s;
+
+    &.state-choosen{
+      font-size: 1.5em;
+      font-weight: bold;
+      background-color: $col-primary;
     }
   }
 }

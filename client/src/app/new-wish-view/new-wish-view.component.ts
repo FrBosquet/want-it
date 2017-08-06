@@ -15,6 +15,7 @@ export class NewWishViewComponent implements OnInit {
   selectedProduct:Object;
   productEditions:Object[] = [];
   selectedEdition:Object;
+  state:number = 1;
 
   brandModal    : boolean = true;
   productModal  : boolean = true;
@@ -28,6 +29,10 @@ export class NewWishViewComponent implements OnInit {
     this.brandModal = false;
     this.productModal = false;
     this.editionModal = false;
+  }
+
+  setState(val:number){
+    this.state = val;
   }
 
   selectBrand(brand:Object){
@@ -52,6 +57,7 @@ export class NewWishViewComponent implements OnInit {
 
   selectEdition(edition: Object){
     this.selectedEdition = edition;
+    console.log("Reached here");
   }
 
   createWish(){

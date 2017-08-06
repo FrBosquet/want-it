@@ -73,3 +73,37 @@ input[type="text"], input[type="password"], textarea{
     }
   }
 }
+
+::-webkit-scrollbar {
+  width: 2px;
+  height: 2px;
+}
+::-webkit-scrollbar-button {
+  width: 0px;
+  height: 0px;
+}
+::-webkit-scrollbar-thumb {
+  background: $col-detail;
+  border: 0px none $col-detail;
+  border-radius: 50px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: $col-detail;
+}
+::-webkit-scrollbar-thumb:active {
+  background: $col-detail;
+}
+::-webkit-scrollbar-track {
+  background: $col-bg;
+  border: 0px none $col-detail;
+  border-radius: 50px;
+}
+::-webkit-scrollbar-track:hover {
+  background: $col-bg;
+}
+::-webkit-scrollbar-track:active {
+  background: $col-bg;
+}
+::-webkit-scrollbar-corner {
+  background: transparent;
+}

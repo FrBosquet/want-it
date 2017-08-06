@@ -1,4 +1,5 @@
 const Product = require('./product.model');
+const Edition = require('../edition/edition.model');
 
 const getAll = (req, res, next) =>{
   Product.find()
@@ -74,23 +75,6 @@ const getByName = (req, res, next) => {
       message: 'Error requesting products',
       err
     }));
-  //
-  // Product.find()
-  //   .exec()
-  //   .then(product => {
-  //     res.status(200).json({
-  //       user: req.user || 'not loged',
-  //       message: `Request all products of the brand`,
-  //       products
-  //     })
-  //   })
-  //   .catch(err => {
-  //     res.status(400).json({
-  //       user: req.user || 'not loged',
-  //       message: 'Error requesting product',
-  //       err
-  //     })
-  //   })
 }
 
 const getOne = (req, res, next) =>{
@@ -123,12 +107,14 @@ const create = (req, res, next) =>{
     const product = new Product({brandId, name, ref, tags});
     product
       .save()
-      .then(
-        b => res.status(201).json({
-          user: req.user || 'not loged',
-          message: `Create a product with parameters ${JSON.stringify(req.body)}`,
-          product: b
-        })
+      .then(b => {
+        const edition = new Edition({productId:b._id, name: '(Any)'});
+        edition.save()
+          .then( r => res.status(201).json({
+              user: req.user || 'not loged',
+              message: `Create a product with parameters ${JSON.stringify(req.body)}`,
+              product: b}));
+        }
       )
       .catch(err=>res.status(400).json({
         user: req.user || 'not loged',

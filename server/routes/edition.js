@@ -2,13 +2,16 @@ const express = require('express');
 const router = express.Router();
 const badRequest = require('./badRequest');
 const {
-  getAll, getByProduct, getOne, create, edit, remove
+  getAll, getByProduct, getOne, create, edit, remove, getByName
 } = require('../api/edition/edition.controller');
 
 router.get('/', getAll);
 
 router.get('/create', badRequest(405, 'Use this route with POST'));
 router.post('/create', create);
+
+router.get('/name', badRequest(405, 'Use this route with POST'));
+router.post('/name', getByName);
 
 router.put('/edit/:id', edit);
 router.get('/edit/:id', badRequest(405, 'Use this route with PUT'));

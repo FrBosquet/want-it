@@ -14,6 +14,7 @@ export class NewBrandModalComponent implements OnInit {
   shortName: string;
   longName: string;
   country:  string;
+  nonsuggested: string;
 
   wikiTitle: string = "This is a wikipedia search!";
   wikiDesc: string = "You could find some nice reference here";
@@ -28,15 +29,32 @@ export class NewBrandModalComponent implements OnInit {
   wikiRef(){
     this.wikiTitle = "Searching...";
     this.request.wiki(this.shortName, (err, data)=>{
+      this.nonsuggested = undefined;
       this.wikiSugestion = data[1];
       this.wikiDescriptions = data[2];
       console.log("wikisug",this.wikiSugestion);
-      this.pickSuggestion(0);
+
+      //check if the exact match is in the wikiSugestion
+      if(this.wikiSugestion.indexOf(this.shortName) === -1){
+        this.nonsuggested = this.shortName;
+        this.pickSuggestion(-1);
+      }else{
+        this.pickSuggestion(0);
+      }
+
       this.zone.run(()=>true);
     });
   }
 
   pickSuggestion(idx){
+    if(idx === -1){
+      this.shortName = this.nonsuggested;
+      this.longName = "";
+      this.wikiTitle = this.nonsuggested;
+      this.wikiDesc = "This brand did not exist in wikipedia ¿Are you shure its spelled like that? In that case, its ok to create this brand. You are too trendy for wikipedia!"
+      return;
+    }
+
     console.log(idx);
     let reg = new RegExp('refer','i');
     console.log(reg);

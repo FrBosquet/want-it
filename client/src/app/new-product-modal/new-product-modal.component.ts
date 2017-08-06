@@ -13,7 +13,7 @@ export class NewProductModalComponent implements OnInit {
 
   name: string;
   ref: string;
-  tags:  string;
+  tags:  string = '';
 
   tagArray: string[];
 
@@ -28,12 +28,13 @@ export class NewProductModalComponent implements OnInit {
         .split(',')
         .map( e => e.replace(/^\s+|\s+$/g, ''))
         .filter(e => e !== '')
-        .map( e => [e[0].toUpperCase(),e.slice(1).toLowerCase()].join(''));
+        .map( e =>  [e[0].toUpperCase(), e.slice(1).toLowerCase()].join(''));
   }
 
   createProduct(){
     console.log(this.name, this.ref, this.tagArray, this.brandId);
-    if(!this.name || !this.ref || !this.tagArray || this.tagArray.length === 0) return;
+    if(!this.name || !this.tagArray || this.tagArray.length === 0) return;
+    if(!this.ref) this.ref = this.name.toLowerCase();
 
     this.request.post('/product/name', {name:this.name, brandId: this.brandId})
       .subscribe(res => {

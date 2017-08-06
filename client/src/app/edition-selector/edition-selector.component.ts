@@ -9,6 +9,7 @@ import { RequestService } from '../services/request.service';
 export class EditionSelectorComponent {
   @Input() editionList: Object[];
   @Input() visibleEdition: Object[];
+  @Input() productId: string;
   @Input() editionModal: boolean;
   @Output() onSelectEdition = new EventEmitter();
 
@@ -16,6 +17,16 @@ export class EditionSelectorComponent {
   maxVisibleEditions: number = 9;
 
   constructor(private request: RequestService) { }
+
+  showEditionModal(event){
+    console.log("Show modal")
+    this.editionModal = true;
+  }
+
+  hideEditionModal(event){
+
+    this.editionModal = false;
+  }
 
   change(event){
     this.visibleEdition = this.editionList
@@ -28,5 +39,18 @@ export class EditionSelectorComponent {
 
   select(edition: Object){
     this.onSelectEdition.emit(edition);
+  }
+
+  newEdition(event: Object){
+    console.log("Received",event);
+    if(event['name']){
+      console.log('This edition exist');
+      this.editionName = event['name'];
+      this.change(event['name']);
+    }else{
+      this.editionList.push(event['edition']);
+      this.editionName = event['edition']['name'];
+      this.change(event['edition']['name']);
+    }
   }
 }

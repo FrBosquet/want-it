@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-post-card',
@@ -12,6 +13,7 @@ export class PostCardComponent implements OnInit {
   product:Object;
   edition:Object;
   user:Object;
+  photoURI:string;
 
   constructor() { }
 
@@ -21,6 +23,7 @@ export class PostCardComponent implements OnInit {
     this.brand = this.product['brandId'];
     this.user = this.post.wishId.userId;
     this.comment = this.post.comment;
+    this.photoURI = `${environment.apiEndpoint}/images/${this.post.photoURI || 'default'}`
   }
 
 }

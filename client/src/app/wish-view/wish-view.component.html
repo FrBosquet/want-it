@@ -34,4 +34,8 @@
     </div>
   </div>
 </section>
-<app-new-post-modal *ngIf='postModal' (onClickOutside)="hidePostModal()"></app-new-post-modal>
+<app-new-post-modal
+  *ngIf='postModal'
+  (onSavePost)="newPost($event)" 
+  (onClickOutside)="hidePostModal()"
+  [wish]="wish"></app-new-post-modal>

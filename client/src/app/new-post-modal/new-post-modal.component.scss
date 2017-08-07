@@ -24,11 +24,12 @@
   .modal{
     @include dropshadow;
     background-color: $col-bg;
+    width: 400px;
     padding: 30px;
     pointer-events: all;
 
     img{
-      height: 200px;
+      width: 100% ;
     }
 
     textarea{

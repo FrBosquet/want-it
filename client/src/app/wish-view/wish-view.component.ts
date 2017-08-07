@@ -49,6 +49,11 @@ export class WishViewComponent implements OnInit {
     this.postModal = false;
   }
 
+  newPost(post){
+    this.hidePostModal();
+    console.log('Created a new post', post);
+  }
+
   stateChange(event){
     this.request.put(`/wish/edit/${this.wish['_id']}`, {state: event})
       .subscribe(res => {

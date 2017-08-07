@@ -34,19 +34,18 @@ export class NewBrandModalComponent implements OnInit {
       this.wikiDescriptions = data[2];
       console.log("wikisug",this.wikiSugestion);
 
-      //check if the exact match is in the wikiSugestion
       if(this.wikiSugestion.indexOf(this.shortName) === -1){
         this.nonsuggested = this.shortName;
-        this.pickSuggestion(-1);
+        this.pickSuggestion(-1, false);
       }else{
-        this.pickSuggestion(0);
+        this.pickSuggestion(0, false);
       }
 
       this.zone.run(()=>true);
     });
   }
 
-  pickSuggestion(idx){
+  pickSuggestion(idx, auto){
     if(idx === -1){
       this.shortName = this.nonsuggested;
       this.longName = "";
@@ -55,14 +54,12 @@ export class NewBrandModalComponent implements OnInit {
       return;
     }
 
-    console.log(idx);
     let reg = new RegExp('refer','i');
-    console.log(reg);
-    console.log('pick',idx)
+
     if(reg.test(this.wikiSugestion[idx])){
-      this.pickSuggestion(idx+1);
+      this.pickSuggestion(idx+1, auto);
     }else{
-      this.wikiTitle = this.wikiSugestion[idx];
+      if(auto) this.wikiTitle = this.wikiSugestion[idx];
       this.shortName = this.wikiTitle;
       this.wikiDesc = this.wikiDescriptions[idx];
       const prob = this.wikiDesc.substring(0, this.wikiDesc.indexOf('is')-1);

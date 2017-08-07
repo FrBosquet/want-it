@@ -152,30 +152,36 @@ const getOne = (req, res, next) =>{
 }
 
 const create = (req, res, next) =>{
-  const { wishId, comment } = req.body;
-  if( !wishId || !comment ){
-    res.status(400).json({
+  const { wishId, comment, photoURI } = req.body;
+  console.log(req.body);
+
+  if( !wishId || !comment || !photoURI ){
+    return res.json({
       user: req.user || 'not loged',
-      message: 'Fulfill editionId/userId'
+      message: 'Fulfill wishId/comment/photoURI',
+      wishId,
+      comment,
+      photoURI
     })
   }
-  else{
-    const post = new Post(req.body);
-    post
-    .save()
-    .then(
-      post => res.status(201).json({
-        user: req.user || 'not loged',
-        message: `Create a post with parameters ${JSON.stringify(req.body)}`,
-        post: post
-      })
-    )
-    .catch(err=>res.status(400).json({
+
+  console.log('reached here');
+  const post = new Post(req.body);
+  post
+  .save()
+  .then(
+    post => res.json({
       user: req.user || 'not loged',
-      message: 'Error saving post',
-      err
-    }));
-  }
+      message: `Create a post with parameters ${JSON.stringify(req.body)}`,
+      post: post
+    })
+  )
+  .catch(err=>res.json({
+    user: req.user || 'not loged',
+    message: 'Error saving post',
+    err
+  }));
+
 }
 
 const edit = (req, res, next) =>{

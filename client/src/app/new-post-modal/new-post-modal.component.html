@@ -1,0 +1,11 @@
+<div class="occluder" (click)="hidePostModal()"></div>
+<div class="wrapper">
+  <div class="modal">
+    <img src="http://via.placeholder.com/360x240" alt="placehold" (click)="uploadPhoto()">
+    <form action="">
+      <input type="file" name="photo" ng2FileSelect [uploader]="uploader" >
+    </form>
+    <textarea name="name" rows="8"></textarea>
+    <app-button [label]="'Send'"></app-button>
+  </div>
+</div>

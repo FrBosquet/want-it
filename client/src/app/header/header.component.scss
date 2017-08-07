@@ -4,6 +4,7 @@ header {
   @include fullwidthcontainer;
   @include flexcontainer(center);
   @include dropshadow;
+  margin-bottom: 70px;
 
   background-color: $col-bg;
   border-bottom: 2px solid $col-detail;

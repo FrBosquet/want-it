@@ -29,10 +29,7 @@
         [editionModal]="editionModal">
       </app-edition-selector>
       <div class="options">
-        <h4>State</h4>
-        <span [ngClass]="{'state-sel': true, 'state-choosen': state === 1}" (click)="setState(1)">I want it</span>
-        <span [ngClass]="{'state-sel': true, 'state-choosen': state === 2}" (click)="setState(2)">I have it</span>
-        <span [ngClass]="{'state-sel': true, 'state-choosen': state === 3}" (click)="setState(3)">I had it</span>
+        <app-state-selector [state]="state" (onStateChange)="setState($event)"></app-state-selector>
         <app-button (click)="createWish()" [label]="'Make a wish'"></app-button>
       </div>
     </div>

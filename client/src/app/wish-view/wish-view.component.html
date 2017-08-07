@@ -1,0 +1,37 @@
+<section class="wrapper">
+  <div class="heading">
+    <div class="wish">
+      <h1><strong>{{product?.name}}</strong>  {{edition?.name}}</h1>
+      <h2>by {{brand?.name}}</h2>
+    </div>
+    <div class="owner">
+      <h2 *ngIf="user && session.user && user._id !== session.user._id">A wish of @{{user?.username}}</h2>
+      <h2 *ngIf="user && session.user && user._id === session.user._id">A wish of you</h2>
+    </div>
+  </div>
+  <div class="photos">
+    <img src="http://via.placeholder.com/360x240" alt="placehold">
+    <img src="http://via.placeholder.com/300x180" alt="placehold">
+    <img src="http://via.placeholder.com/360x240" alt="placehold">
+    <img src="http://via.placeholder.com/700x480" alt="placehold">
+    <img src="http://via.placeholder.com/360x240" alt="placehold">
+    <img src="http://via.placeholder.com/360x240" alt="placehold">
+  </div>
+  <div class="info">
+    <div class="dates">
+      <p>This wish was created on {{wish?.created_at |  date:'dd/MM/yyyy'}} at {{wish?.created_at |  date:'hh:mm'}}</p>
+      <p *ngIf="wish?.haveDate">This wish came true on {{wish?.haveDate |  date:'dd/MM/yyyy'}} at {{wish?.haveDate |  date:'hh:mm'}}</p>
+      <p *ngIf="wish?.hadDate">This wish had gone on {{wish?.hadDate |  date:'dd/MM/yyyy'}} at {{wish?.hadDate |  date:'hh:mm'}}</p>
+    </div>
+    <div class="foreign" *ngIf="user && session.user && user._id !== session.user._id">
+      <span class="state" *ngIf="wish && wish.state === 1">{{user.name}} want this!</span>
+      <span class="state" *ngIf="wish && wish.state === 2">{{user.name}} have this</span>
+      <span class="state" *ngIf="wish && wish.state === 3">{{user.name}} once had this</span>
+    </div>
+    <div class="user" *ngIf="user && session.user && user._id === session.user._id">
+      <app-button (click)="showPostModal()" [label]="'Make a post about this'"></app-button>
+      <app-state-selector [state]="wish.state" (onStateChange)="stateChange($event)"></app-state-selector>
+    </div>
+  </div>
+</section>
+<app-new-post-modal *ngIf='postModal' (onClickOutside)="hidePostModal()"></app-new-post-modal>

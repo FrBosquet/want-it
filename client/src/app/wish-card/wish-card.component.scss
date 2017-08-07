@@ -3,6 +3,7 @@
 .wish-card{
   @include dropshadow;
   margin: 10px;
+  cursor: pointer;
 
   img{
     width: 90%;

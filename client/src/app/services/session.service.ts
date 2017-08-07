@@ -16,7 +16,7 @@ export class SessionService {
     unsetSession(){
       this.request.get('/user/logout')
       .subscribe(res => {
-        console.log(res);
+        // console.log(res);
         this.user = undefined;
       })
     }
@@ -24,7 +24,7 @@ export class SessionService {
     getSession(){
       this.request.get('/user/getuser')
         .subscribe(res => {
-          console.log(res);
+          // console.log(res);
           this.user = res.user;
         })
     }

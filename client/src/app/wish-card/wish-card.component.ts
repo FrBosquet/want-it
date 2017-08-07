@@ -1,4 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-wish-card',
@@ -12,13 +14,18 @@ export class WishCardComponent implements OnInit {
   edition:Object;
   user:Object;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
     this.edition = this.wish.editionId;
     this.product = this.edition['productId'];
     this.brand = this.product['brandId'];
     this.user = this.wish.userId;
+  }
+
+  goToDetail(){
+    console.log('got to detail')
+    this.router.navigate([`wish/${this.wish._id}`]);;
   }
 
 }

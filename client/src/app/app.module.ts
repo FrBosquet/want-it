@@ -4,6 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 import { HttpModule } from '@angular/http';
 
+import { FileSelectDirective } from "ng2-file-upload";
+
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
@@ -13,6 +15,7 @@ import { LoginViewComponent } from './login-view/login-view.component';
 
 import { RequestService } from './services/request.service';
 import { SessionService } from './services/session.service';
+
 import { WishCardComponent } from './wish-card/wish-card.component';
 import { PostCardComponent } from './post-card/post-card.component';
 import { ProfileViewComponent } from './profile-view/profile-view.component';
@@ -26,13 +29,17 @@ import { EditionCardComponent } from './edition-card/edition-card.component';
 import { NewBrandModalComponent } from './new-brand-modal/new-brand-modal.component';
 import { NewProductModalComponent } from './new-product-modal/new-product-modal.component';
 import { NewEditionModalComponent } from './new-edition-modal/new-edition-modal.component';
+import { WishViewComponent } from './wish-view/wish-view.component';
+import { StateSelectorComponent } from './state-selector/state-selector.component';
+import { NewPostModalComponent } from './new-post-modal/new-post-modal.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home',  component: HomeComponent },
   { path: 'login', component: LoginViewComponent },
   { path: 'profile', component: ProfileViewComponent },
-  { path: 'new-wish', component: NewWishViewComponent }
+  { path: 'new-wish', component: NewWishViewComponent },
+  { path: 'wish/:id', component: WishViewComponent }
 ];
 
 @NgModule({
@@ -56,6 +63,10 @@ const routes: Routes = [
     NewBrandModalComponent,
     NewProductModalComponent,
     NewEditionModalComponent,
+    WishViewComponent,
+    StateSelectorComponent,
+    NewPostModalComponent,
+    FileSelectDirective,
   ],
   imports: [
     FormsModule,

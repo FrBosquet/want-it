@@ -64,7 +64,7 @@ export class NewWishViewComponent implements OnInit {
     let editionId = this.selectedEdition['_id'];
     let userId = this.session.user['_id'];
 
-    this.request.post('/wish/create', { editionId, userId })
+    this.request.post('/wish/create', { editionId, userId, state: this.state})
       .subscribe(res=>{
         console.log(res);
         this.router.navigate(['/']);

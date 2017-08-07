@@ -7,6 +7,7 @@ const app = require('express')();
 
 const whitelist = [
     'http://localhost:4200',
+
 ];
 const corsOptions = {
     origin: function(origin, callback){

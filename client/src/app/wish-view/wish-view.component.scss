@@ -1,0 +1,63 @@
+@import '../../variables.scss';
+
+.wrapper{
+  .heading{
+    @include flexcontainer(space-between);
+
+    .wish{
+      h1{
+        font-size: 2.8em;
+      }
+
+      h2{
+        font-size: 1.7em;
+        text-transform: none;
+      }
+
+    }
+
+    .owner{
+      h2{
+        text-transform: none;
+      }
+    }
+  }
+
+  .photos{
+    @include flexcontainer(flex-start);
+    overflow-x: auto;
+    padding: 4px 0;
+    img{
+      margin-right: 4px;
+      height: 200px;
+    }
+  }
+
+  .info{
+    @include flexcontainer(space-between);
+
+    .dates{
+      p{
+        font-size: 0.8em;
+        padding: 0px;
+        margin: 4px;
+      }
+    }
+
+    .foreign{
+      margin: 0;
+      margin-top: 30px;
+
+      .state{
+        @include bullet;
+        padding: 12px;
+        margin-right: 0;
+      }
+    }
+
+    .user{
+      @include flexcontainer(flex-end);
+
+    }
+  }
+}

@@ -17,7 +17,7 @@ export class RequestService {
     constructor( private http:Http ) { }
 
     get( query: String) {
-      console.log(`${environment.apiEndpoint}${query}`);
+      // console.log(`${environment.apiEndpoint}${query}`);
       return this.http.get(`${environment.apiEndpoint}${query}`, this.options)
       .map((res:Response) => res.json());
 
@@ -25,6 +25,11 @@ export class RequestService {
 
     post( query: String, data: Object) {
       return this.http.post(`${environment.apiEndpoint}${query}`, data, this.options)
+        .map((res:Response) => res.json());
+    }
+
+    put( query: String, data: Object) {
+      return this.http.put(`${environment.apiEndpoint}${query}`, data, this.options)
         .map((res:Response) => res.json());
     }
 

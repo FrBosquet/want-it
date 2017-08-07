@@ -45,6 +45,7 @@ input[type="text"], input[type="password"], textarea{
   bottom: 15px;
   padding: 5px;
   cursor: pointer;
+  z-index: 100;
 
   $hiddenper : 0.05;
 

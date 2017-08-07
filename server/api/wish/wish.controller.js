@@ -102,7 +102,28 @@ const edit = (req, res, next) =>{
   Wish.findById (req.params.id)
     .exec()
     .then( wish => {
-        wish = Object.assign(wish, req.body);
+
+        let adds = {};
+
+        if(!wish.state) wish.state=1;
+
+        if(wish.state === 1 && req.body.state === 2){
+          adds['haveDate'] = new Date();
+        }else if(wish.state === 2 && req.body.state === 3){
+          adds['hadDate'] = new Date();
+        }else if(wish.state === 3 && req.body.state === 2){
+          adds['hadDate'] = undefined;
+        }else if(wish.state === 2 && req.body.state === 1){
+          adds['haveDate'] = undefined;
+        }else if(wish.state === 1 && req.body.state === 3){
+          adds['haveDate'] = new Date();
+          adds['hadDate'] = new Date();
+        }else if(wish.state === 3 && req.body.state === 1){
+          adds['haveDate']= undefined;
+          adds['hadDate'] = undefined;
+        }
+
+        wish = Object.assign(wish, req.body, adds);
         wish.save()
           .then( modifiedEdition =>{
             res.status(201).json({

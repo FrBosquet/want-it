@@ -2,7 +2,8 @@ const express = require('express');
 const router = express.Router();
 const badRequest = require('./badRequest');
 const multer = require('multer');
-const upload = multer({dest: './public/images/stage'}).single('photo');
+const upload = multer({dest: './public/images/stage'}).single('file');
+
 
 router.get('/', badRequest(405, 'Use this route with POST'));
 

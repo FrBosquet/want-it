@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FileUploader } from "ng2-file-upload";
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-new-post-modal',
@@ -11,7 +12,7 @@ export class NewPostModalComponent implements OnInit {
   @Output() onClickOutside = new EventEmitter()
 
   uploader: FileUploader = new FileUploader({
-    url: `photo`
+    url: `${environment.apiEndpoint}/photo`
   });
 
   constructor() {

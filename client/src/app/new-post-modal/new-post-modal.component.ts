@@ -72,9 +72,10 @@ export class NewPostModalComponent implements OnInit {
         .subscribe(res=>{
           let path = `/photo/save`;
           this.request.post(path,{id: this.fileName})
-            .subscribe(saveRes=>{});
-          console.log('saved the earth', res);
-          this.onSavePost.emit(res);
+            .subscribe(saveRes=>{
+              console.log('saved the earth', res);
+              this.onSavePost.emit(res);
+            });
         },
         err=> console.log(err))
     }else{

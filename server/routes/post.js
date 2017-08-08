@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const badRequest = require('./badRequest');
 const {
-  getAll, getByUser, getByWish, getByProduct, getByBrand, getByEdition, getOne, create, edit, remove
+  getAll, getByUser, getByWish, getByProduct, getByBrand, getByEdition, getOneOfProduct, getOne, create, edit, remove
 } = require('../api/post/post.controller');
 
 router.get('/', getAll);
@@ -21,6 +21,7 @@ router.delete('/remove/:id', remove);
 router.get('/user/:id', getByUser);
 router.get('/brand/:id', getByBrand);
 router.get('/product/:id', getByProduct);
+router.get('/product/one/:id', getOneOfProduct);
 router.get('/edition/:id', getByEdition);
 router.get('/wish/:id', getByWish);
 

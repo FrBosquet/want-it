@@ -31,7 +31,9 @@ const wishSchema = new mongoose.Schema({
     type: Boolean,
     default: false
   },
-  amazonId: String
+  birthdayGifter: {
+    type: Schema.Types.ObjectId
+  }
 }, {
   timestamps: {
     createdAt: "created_at",

@@ -10,12 +10,14 @@
     </div>
   </div>
   <div class="photos">
-    <img src="http://via.placeholder.com/360x240" alt="placehold">
-    <img src="http://via.placeholder.com/300x180" alt="placehold">
-    <img src="http://via.placeholder.com/360x240" alt="placehold">
-    <img src="http://via.placeholder.com/700x480" alt="placehold">
-    <img src="http://via.placeholder.com/360x240" alt="placehold">
-    <img src="http://via.placeholder.com/360x240" alt="placehold">
+    <div *ngFor='let post of posts'>
+      <span>"{{post.comment}}"</span>
+      <img src="{{post.photoURI}}" alt="placehold">
+    </div>
+    <div *ngIf="posts.length === 0">
+      <span>There is no post of this product yet</span>
+      <img src="http://localhost:3000/images/default" alt="placehold">
+    </div>
   </div>
   <div class="info">
     <div class="dates">
@@ -24,6 +26,9 @@
       <p *ngIf="wish?.hadDate">This wish had gone on {{wish?.hadDate |  date:'dd/MM/yyyy'}} at {{wish?.hadDate |  date:'hh:mm'}}</p>
     </div>
     <div class="foreign" *ngIf="user && session.user && user._id !== session.user._id">
+      <span class="state clickable" *ngIf="wish.state === 1 && !wish.birthdayLock">Nobody is going gift this</span>
+      <span class="state clickable" *ngIf="wish.state === 1 && wish.birthdayLock && wish.birthdayGifter == user._id">You are going to gift this</span>
+      <span class="state not-clickable"*ngIf="wish.state === 1 && wish.birthdayLock && wish.birthdayGifter !== uder._id">Somebody is going to gift this</span>
       <span class="state" *ngIf="wish && wish.state === 1">{{user.name}} want this!</span>
       <span class="state" *ngIf="wish && wish.state === 2">{{user.name}} have this</span>
       <span class="state" *ngIf="wish && wish.state === 3">{{user.name}} once had this</span>
@@ -33,9 +38,12 @@
       <app-state-selector [state]="wish.state" (onStateChange)="stateChange($event)"></app-state-selector>
     </div>
   </div>
+  <div class="google-search">
+    <app-google-search *ngIf="product" [product]="product"></app-google-search>
+  </div>
 </section>
 <app-new-post-modal
   *ngIf='postModal'
-  (onSavePost)="newPost($event)" 
+  (onSavePost)="newPost($event)"
   (onClickOutside)="hidePostModal()"
   [wish]="wish"></app-new-post-modal>

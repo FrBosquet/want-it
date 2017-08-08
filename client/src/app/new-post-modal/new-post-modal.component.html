@@ -2,16 +2,20 @@
 <div class="wrapper">
   <div class="modal">
     <img src="{{ fileURI }}" alt="placehold">
-    <input
-      *ngIf="!fileName"
-      type="file"
-      name="photo"
-      ng2FileSelect
-      [uploader]="uploader"
-      (change)="uploadPhoto()">
+    <div class="photoUL" *ngIf="!fileName">
+      <label for="photo">Choose a file</label>
+      <input
+        type="file"
+        id='photo'
+        name="photo"
+        ng2FileSelect
+        [uploader]="uploader"
+        (change)="uploadPhoto()">
+    </div>
     <button
       *ngIf="fileName"
       type="button"
+      class="resetButton"
       (click)="resetPhoto()">
       Reset photo
     </button>

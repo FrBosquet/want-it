@@ -3,6 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import { RequestService } from '../services/request.service';
 import { SessionService } from '../services/session.service';
+import { environment } from '../../environments/environment';
+
 
 @Component({
   selector: 'app-wish-view',
@@ -14,7 +16,9 @@ export class WishViewComponent implements OnInit {
   edition: Object;
   product: Object;
   brand: Object;
-  user: Object;
+  user: Object ;
+  posts: Object[] = [];
+
 
   postModal: boolean = false;
   constructor(
@@ -32,6 +36,11 @@ export class WishViewComponent implements OnInit {
           this.product = this.edition['productId'];
           this.brand = this.product['brandId'];
           this.user = this.wish['userId'];
+          this.request.get(`/post/product/${this.product['_id']}`)
+            .subscribe(res => {
+              this.posts = res.posts.map( e => ({comment: e.comment, photoURI: `${environment.apiEndpoint}/images/${e.photoURI || 'default'}` })).slice(0, 10);
+              console.log(this.posts);
+            })
         },
         err => this.router.navigate(['/'])
       );
@@ -51,7 +60,10 @@ export class WishViewComponent implements OnInit {
 
   newPost(post){
     this.hidePostModal();
-    console.log('Created a new post', post);
+    console.log('Created a new post', post.post);
+    this.posts.unshift({
+      comment: post.post.comment, photoURI: `${environment.apiEndpoint}/images/${post.post.photoURI}`
+    })
   }
 
   stateChange(event){

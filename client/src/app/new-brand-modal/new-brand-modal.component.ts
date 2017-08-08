@@ -59,11 +59,11 @@ export class NewBrandModalComponent implements OnInit {
     if(reg.test(this.wikiSugestion[idx])){
       this.pickSuggestion(idx+1, auto);
     }else{
-      if(auto) this.wikiTitle = this.wikiSugestion[idx];
-      this.shortName = this.wikiTitle;
+      this.wikiTitle = this.wikiSugestion[idx];
+      if(auto) this.shortName = this.wikiTitle;
       this.wikiDesc = this.wikiDescriptions[idx];
       const prob = this.wikiDesc.substring(0, this.wikiDesc.indexOf('is')-1);
-      this.longName = prob;
+      if(auto) this.longName = prob;
     }
   }
 

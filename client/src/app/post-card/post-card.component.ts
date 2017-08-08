@@ -23,7 +23,7 @@ export class PostCardComponent implements OnInit {
     this.brand = this.product['brandId'];
     this.user = this.post.wishId.userId;
     this.comment = this.post.comment;
-    this.photoURI = `${environment.apiEndpoint}/images/${this.post.photoURI || 'default'}`
+    this.photoURI = `url(${environment.apiEndpoint}/images/${this.post.photoURI || 'default'})`
   }
 
 }

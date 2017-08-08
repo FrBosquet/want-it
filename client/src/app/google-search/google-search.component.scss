@@ -1,0 +1,15 @@
+@import '../../variables.scss';
+
+.links{
+  @include flexcontainer(space-between);
+  align-items: flex-start;
+  div{
+    width: calc( 100% / 5);
+
+    a h6{
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+}

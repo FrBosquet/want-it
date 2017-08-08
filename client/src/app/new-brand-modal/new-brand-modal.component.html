@@ -14,7 +14,7 @@
 
     <div class="wiki-suggest">
       <h6 *ngIf="nonsuggested" (click)="pickSuggestion(-1, true)">{{nonsuggested}}</h6>
-      <h6 *ngFor="let sugest of wikiSugestion, let i=index" (click)="pickSuggestion(i)">{{sugest}}</h6>
+      <h6 *ngFor="let sugest of wikiSugestion, let i=index" (click)="pickSuggestion(i, true)">{{sugest}}</h6>
     </div>
 
     <div class="wiki-search">

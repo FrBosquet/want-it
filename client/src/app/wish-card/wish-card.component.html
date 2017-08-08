@@ -1,4 +1,6 @@
 <div class='wish-card' (click)="goToDetail()">
-  <img src="http://via.placeholder.com/240x200" alt="placehold">
-  <p><strong>{{ brand.name }} {{product.name}} {{edition.name}}</strong> by <strong> @{{user.username}} </strong></p>
+  <!-- <img src="{{photoURI}}" alt="placehold"> -->
+  <div class="img" [ngStyle]="{'background-image': photoURI}"></div>
+  <p><strong>{{ brand.name }} {{product.name}} {{edition.name}}</strong></p>
+  <footer>by <strong> @{{user.username}} </strong></footer>
 </div>

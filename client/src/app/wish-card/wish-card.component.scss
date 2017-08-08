@@ -5,14 +5,27 @@
   margin: 10px;
   cursor: pointer;
 
-  img{
-    width: 90%;
+  .img{
+    width: calc( 100% - 20px);
     margin: 10px;
+    background-position: center;
+    background-size: cover;
+    padding-top: calc( 2 * 100% / 3);
+    border: 1px solid $col-terciary;
   }
 
   p{
-    height: 25px;
+    height: 18px;
     overflow-y: hidden;
     text-align: left;
+    margin: auto 0px;
+  }
+
+  footer{
+    overflow-y: hidden;
+    padding: 10px;
+    height: 32px;
+    font-size: 0.8em;
+    color: $col-secondary;
   }
 }

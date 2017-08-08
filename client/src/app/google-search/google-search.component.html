@@ -1,0 +1,7 @@
+<h2>Useful links</h2>
+<div class='links'>
+  <div *ngFor='let link of links'>
+    <a href="{{link.link}}" target="_blank"><h6>{{link.title}}</h6></a>
+    <p>{{link.description}}</p>
+  </div>
+</div>

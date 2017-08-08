@@ -1,5 +1,6 @@
 <div class='post-card'>
-  <img src="{{photoURI}}" alt="placehold">
+  <div class="img" [ngStyle]="{'background-image': photoURI}">
+  </div>
   <p>"{{comment}}"</p>
-  <p><strong>{{ brand.name }} {{product.name}} {{edition.name}}</strong> by <strong> @{{user.username}} </strong></p>
+  <footer><strong>{{ brand.name }} {{product.name}} {{edition.name}}</strong> by <strong> @{{user.username}} </strong></footer>
 </div>

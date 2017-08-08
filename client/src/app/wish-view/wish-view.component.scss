@@ -27,9 +27,29 @@
     @include flexcontainer(flex-start);
     overflow-x: auto;
     padding: 4px 0;
-    img{
+
+    div{
+      position: relative;
       margin-right: 4px;
-      height: 200px;
+
+      img{
+        height: 200px;
+      }
+
+      span{
+        text-transform: none;
+        position: absolute;
+        bottom: 8px;
+        left: 0px;
+        padding: 5px;
+        display: inline-block;
+        word-wrap: normal;
+        color: $col-bg;
+        box-sizing: border-box;
+        background-color: adjust-color($col-primary, $alpha: -0.5) ;
+        width: 100%;
+      }
+
     }
   }
 

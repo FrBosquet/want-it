@@ -1,25 +1,7 @@
 <div class="occluder" (click)="hidePostModal()"></div>
 <div class="wrapper">
   <div class="modal">
-    <!-- <img src="{{ fileURI }}" alt="placehold">
-    <div class="photoUL" *ngIf="!fileName">
-      <label for="photo">Choose a file</label>
-      <input
-        type="file"
-        id='photo'
-        name="photo"
-        ng2FileSelect
-        [uploader]="uploader"
-        (change)="uploadPhoto()">
-    </div> -->
     <app-photo-uploader (onPhotoChange)="photoChange($event)"></app-photo-uploader>
-    <button
-      *ngIf="fileName"
-      type="button"
-      class="resetButton"
-      (click)="resetPhoto()">
-      Reset photo
-    </button>
     <textarea name="name" rows="8" [(ngModel)]="content"></textarea>
     <app-button [label]="'Send'" (click)="createPost()"></app-button>
   </div>

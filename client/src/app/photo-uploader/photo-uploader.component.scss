@@ -1,0 +1,36 @@
+@import '../../variables.scss';
+
+img{
+  width: 100%;
+}
+
+.photoUL{
+  input{
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+  }
+
+  label{
+    @include bullet;
+    box-sizing: border-box;
+    padding: 12px;
+    cursor: pointer;
+    width: 100%;
+  }
+}
+
+.resetButton{
+  @include bullet;
+  box-sizing: border-box;
+  padding: 12px;
+  cursor: pointer;
+  width: 100%;
+  font-family: 'Questrial', sans-serif;
+  text-align: left;
+  border: none;
+  font-size: 1em;
+}

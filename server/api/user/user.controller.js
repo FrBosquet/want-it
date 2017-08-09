@@ -13,12 +13,13 @@ const signup = (req, res, next) => {
     username,
     email,
     password,
-    name
+    name,
+    photoURI
   } = req.body;
 
   console.log('Reached here', username, email, password)
 
-  if (!username || !password || !email || !name) {
+  if (!username || !password || !email || !name || !photoURI) {
     res.json({
       message: 'Provide username and password'
     });

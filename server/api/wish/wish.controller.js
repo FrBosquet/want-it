@@ -28,20 +28,30 @@ const getAll = (req, res, next) =>{
 }
 
 const getByUser = (req, res, next) => {
-  Wish.find({ userId : req.params.id})
+  console.log(req.params.id);
+  Wish.find({ userId : req.params.id.toString()})
+    .populate({
+      path: 'editionId',
+      populate: {
+        path: 'productId',
+        populate: {
+          path: 'brandId'
+        }
+      }
+    })
     .exec()
     .then(wishes=>{
       res.status(200).json({
         user: req.user || 'not loged',
-        message: `Request all wishes of the brand ${wishes[0].productId.name}`,
+        message: `Request all wishes of the user`,
         wishes
       })
     })
-    .catch(err=>res.status(400).json({
-      user: req.user || 'not loged',
-      message: 'Error requesting wishes',
-      err
-    }));
+    .catch(err=> res.status(400).json({
+        user: req.user || 'not loged',
+        message: 'Error requesting wishes',
+        err
+      }));
 }
 
 const getOne = (req, res, next) =>{

@@ -1,1 +1,41 @@
 @import '../../variables.scss';
+
+section{
+  @include flexcontainer( space-between );
+  align-items: flex-start;
+
+  .left-column{
+    @include growingchild(1);
+
+    .user-photo{
+      width: 100%;
+      padding-top: 100%;
+      background-position: center;
+      background-size: cover;
+    }
+  }
+
+  .center-column{
+    @include growingchild(5);
+
+    .wish{
+      cursor: pointer;
+      margin-left: 25px;
+      margin-top: 5px;
+    }
+  }
+
+  .right-column{
+    @include growingchild(10);
+
+    .post{
+      margin-left: 25px;
+      margin-top: 5px;
+    }
+  }
+}
+
+.delete{
+  cursor: pointer;
+  color: $col-detail;
+}

@@ -1,6 +1,33 @@
 <section>
-  <h1>Profile</h1>
-  <img src="http://via.placeholder.com/200x200" alt="placehold">
-  <h3>{{name}}</h3>
-  <h6>@{{username}}</h6>
+  <div class="left-column">
+    <h1>Profile</h1>
+    <div class="user-photo" [ngStyle]="{'background-image': session.photoURI}"></div>
+    <h3>{{name}}</h3>
+    <h6>@{{username}}</h6>
+  </div>
+  <div class="center-column">
+    <h2>Wishes</h2>
+    <div class="wish" *ngFor="let wish of wishList">
+      <span class="delete" (click)="deleteWish(wish._id)">
+        [delete]
+      </span>
+      <span class="link" (click)="goToWish(wish._id)">
+        {{wish.editionId.productId.brandId.name}}
+        {{wish.editionId.productId.name}}
+      </span>
+    </div>
+  </div>
+  <div class="right-column">
+    <h2>Posts</h2>
+    <div class="post" *ngFor="let post of postList">
+      <span class="delete" (click)="deletePost(wish._id)">
+        [delete]
+      </span>
+      <span class="link" (click)="goToWish(wish._id)">
+        <strong><em>"{{post.comment}}"</em></strong> on
+        {{post.wishId.editionId.productId.brandId.name}}
+        {{post.wishId.editionId.productId.name}}
+      </span>
+    </div>
+  </div>
 </section>

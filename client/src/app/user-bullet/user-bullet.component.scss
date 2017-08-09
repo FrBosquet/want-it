@@ -1,0 +1,70 @@
+@import '../../variables.scss';
+
+.user-bullet{
+  @include dropshadow;
+  @include flexcontainer(center);
+  flex-direction: column;
+  width: 100px;
+  height: 100px;
+  background-color: $col-detail;
+  color: $col-bg;
+  border-radius: 50%;
+  position: fixed;
+  right: 30px;
+  bottom: 15px;
+  padding: 5px;
+  cursor: pointer;
+  z-index: 100;
+
+  $hiddenper : 0.05;
+
+  span{
+    transition: transform 0.5s;
+    position: absolute;
+    background-color: $col-detail;
+    display: inline-block;
+    width: 90%;
+    text-align: center;
+    padding: 3px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  .user-photo{
+    filter: none;
+    transition: filter 1s;
+    background-position: center;
+    background-size: cover;
+    border-radius: 50%;
+    width: 80%;
+    padding-top: 80%;
+    position: absolute;
+    top: 10%;
+  }
+
+
+  .username{
+    transform-origin: 50% 0%;
+    transform: scaleY(1);
+  }
+
+  .logout{
+    transform-origin: 50% 100%;
+    transform: scaleY($hiddenper);
+  }
+
+  &:hover{
+    .user-photo{
+      filter: blur(2px);
+    }
+
+    .username{
+      transform: scaleY($hiddenper);
+    }
+
+    .logout{
+      transform: scaleY(1);
+    }
+  }
+}

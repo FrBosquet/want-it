@@ -19,12 +19,18 @@ export class LoginViewComponent implements OnInit {
   signupName      : string;
   signupPassword  : string;
   signupEmail     : string;
+  signupPhoto     : string;
 
   error           : string = ''
 
   constructor(private router: Router, private request: RequestService, private session: SessionService) { }
 
   ngOnInit() {
+  }
+
+  photoChange(photo){
+    console.log('photo')
+    this.signupPhoto = photo;
   }
 
   login(form){
@@ -51,16 +57,22 @@ export class LoginViewComponent implements OnInit {
       !this.signupUsername ||
       !this.signupName ||
       !this.signupPassword ||
-      !this.signupEmail) {
+      !this.signupEmail ||
+      !this.signupPhoto ) {
         this.error = "Fulfill all the fields"
         return;
       }
-    console.log(form.value);
-    this.request.post('/user/signup', form.value)
+    const args = Object.assign({}, form.value, {photoURI: this.signupPhoto});
+    console.log(args);
+    this.request.post('/user/signup',args)
       .subscribe(res => {
-          console.log(res.user);
-          this.session.setSession(res.user);
-          this.router.navigate(['/']);
+          let path = `/photo/save`;
+          this.request.post(path,{id: this.signupPhoto})
+            .subscribe(saveRes=>{
+              console.log('saved the earth', res);
+              this.session.setSession(res.user);
+              this.router.navigate(['/']);
+            });
       }, err => console.log('Error al hacer login'));
   }
 

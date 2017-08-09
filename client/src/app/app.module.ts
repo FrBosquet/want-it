@@ -34,6 +34,7 @@ import { StateSelectorComponent } from './state-selector/state-selector.componen
 import { NewPostModalComponent } from './new-post-modal/new-post-modal.component';
 import { GoogleSearchComponent } from './google-search/google-search.component';
 import { PhotoUploaderComponent } from './photo-uploader/photo-uploader.component';
+import { UserBulletComponent } from './user-bullet/user-bullet.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -71,6 +72,7 @@ const routes: Routes = [
     FileSelectDirective,
     GoogleSearchComponent,
     PhotoUploaderComponent,
+    UserBulletComponent,
   ],
   imports: [
     FormsModule,

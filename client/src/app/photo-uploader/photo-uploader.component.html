@@ -9,3 +9,10 @@
     [uploader]="uploader"
     (change)="uploadPhoto()">
 </div>
+<button
+  *ngIf="fileName"
+  type="button"
+  class="resetButton"
+  (click)="resetPhoto()">
+  Reset photo
+</button>

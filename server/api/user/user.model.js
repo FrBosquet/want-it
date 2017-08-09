@@ -10,7 +10,8 @@ const userSchema = new mongoose.Schema({
   name: String,
   email: String,
   country: String,
-  facebookId: String
+  facebookId: String,
+  photoURI: String
 }, {
   timestamps: {
     createdAt: "created_at",

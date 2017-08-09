@@ -3,9 +3,6 @@
   <div class='wrapper'>
     <router-outlet></router-outlet>
   </div>
-  <div (click)="logout()" *ngIf="session.user" class='user-bullet'>
-    <span class="username">{{session.user.name}}</span>
-    <span class="logout">logout</span>
-  </div>
+  <app-user-bullet></app-user-bullet>
 
 </div>

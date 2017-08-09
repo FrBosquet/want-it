@@ -58,6 +58,28 @@ export class WishViewComponent implements OnInit {
     this.postModal = false;
   }
 
+  giftThis(){
+    this.request.put(`/wish/edit/${this.wish['_id']}`,{
+      birthdayLock : true,
+      birthdayGifter: this.session.user['_id']
+    })
+      .subscribe(res => {
+        console.log(res);
+        this.wish = res.wish;
+      })
+  }
+
+  ungiftThis(){
+    this.request.put(`/wish/edit/${this.wish['_id']}`,{
+      birthdayLock : false,
+      birthdayGifter: undefined
+    })
+      .subscribe(res => {
+        console.log(res);
+        this.wish = res.wish;
+      })
+  }
+
   newPost(post){
     this.hidePostModal();
     console.log('Created a new post', post.post);

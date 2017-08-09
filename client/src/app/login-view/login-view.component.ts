@@ -12,6 +12,15 @@ import 'rxjs/add/operator/catch';
   styleUrls: ['./login-view.component.scss']
 })
 export class LoginViewComponent implements OnInit {
+  loginUsername   : string;
+  loginPassword   : string;
+
+  signupUsername  : string;
+  signupName      : string;
+  signupPassword  : string;
+  signupEmail     : string;
+
+  error           : string = ''
 
   constructor(private router: Router, private request: RequestService, private session: SessionService) { }
 
@@ -19,13 +28,40 @@ export class LoginViewComponent implements OnInit {
   }
 
   login(form){
+    if(
+      !this.loginUsername ||
+      !this.loginPassword){
+        this.error = "Fulfill all the fields"
+        return;
+      }
     console.log(form.value);
     this.request.post('/user/login', form.value)
       .subscribe(res => {
           console.log(res.user);
           this.session.setSession(res.user);
           this.router.navigate(['/']);
-      }, err => console.log('Nombre de usuario o contraseña incorrectos'));
+      }, err => {
+        console.log('Nombre de usuario o contraseña incorrectos');
+        this.error = 'Incorrect username or password'
+      });
+  }
+
+  signup(form){
+    if(
+      !this.signupUsername ||
+      !this.signupName ||
+      !this.signupPassword ||
+      !this.signupEmail) {
+        this.error = "Fulfill all the fields"
+        return;
+      }
+    console.log(form.value);
+    this.request.post('/user/signup', form.value)
+      .subscribe(res => {
+          console.log(res.user);
+          this.session.setSession(res.user);
+          this.router.navigate(['/']);
+      }, err => console.log('Error al hacer login'));
   }
 
 }

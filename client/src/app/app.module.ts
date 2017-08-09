@@ -33,6 +33,7 @@ import { WishViewComponent } from './wish-view/wish-view.component';
 import { StateSelectorComponent } from './state-selector/state-selector.component';
 import { NewPostModalComponent } from './new-post-modal/new-post-modal.component';
 import { GoogleSearchComponent } from './google-search/google-search.component';
+import { PhotoUploaderComponent } from './photo-uploader/photo-uploader.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -69,6 +70,7 @@ const routes: Routes = [
     NewPostModalComponent,
     FileSelectDirective,
     GoogleSearchComponent,
+    PhotoUploaderComponent,
   ],
   imports: [
     FormsModule,

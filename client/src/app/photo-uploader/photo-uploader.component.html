@@ -1,0 +1,11 @@
+<img src="{{ fileURI }}" alt="placehold">
+<div class="photoUL" *ngIf="!fileName">
+  <label for="photo">Choose a file</label>
+  <input
+    type="file"
+    id='photo'
+    name="photo"
+    ng2FileSelect
+    [uploader]="uploader"
+    (change)="uploadPhoto()">
+</div>

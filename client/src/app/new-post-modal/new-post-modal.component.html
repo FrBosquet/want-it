@@ -1,7 +1,7 @@
 <div class="occluder" (click)="hidePostModal()"></div>
 <div class="wrapper">
   <div class="modal">
-    <img src="{{ fileURI }}" alt="placehold">
+    <!-- <img src="{{ fileURI }}" alt="placehold">
     <div class="photoUL" *ngIf="!fileName">
       <label for="photo">Choose a file</label>
       <input
@@ -11,7 +11,8 @@
         ng2FileSelect
         [uploader]="uploader"
         (change)="uploadPhoto()">
-    </div>
+    </div> -->
+    <app-photo-uploader (onPhotoChange)="photoChange($event)"></app-photo-uploader>
     <button
       *ngIf="fileName"
       type="button"

@@ -12,25 +12,27 @@ const signup = (req, res, next) => {
   const {
     username,
     email,
-    password
+    password,
+    name
   } = req.body;
 
-  if (!username || !password || !email) {
-    res.status(400).json({
+  console.log('Reached here', username, email, password)
+
+  if (!username || !password || !email || !name) {
+    res.json({
       message: 'Provide username and password'
     });
+    return;
   }
-  else{
-    User.findOne({username})
-      .exec()
-      .then(user => {
-        if(user){
-          res.status(400).send({
-            message: 'The user already exist in the database'
-          })
-          return;
-        }
-      })
+
+  User.findOne({username})
+    .exec()
+    .then(existingUser => {
+      if(existingUser){
+        return res.status(400).send({
+          message: 'The user already exist in the database'
+        })
+      }
 
       const salt = bcrypt.genSaltSync(10);
       const hashPass = bcrypt.hashSync(password, salt);
@@ -40,24 +42,25 @@ const signup = (req, res, next) => {
       user.save()
         .then( newUser =>{
           req.login(newUser, err =>{
+
             if(err){
-              res.status(400).json({
+              return res.status(400).json({
                 message: 'Error loging a new user'
               });
-              return;
             }
-            res.status(201).json({
+
+            return res.status(201).json({
               message: 'User created succesfully',
               user: req.user
             })
           })
         })
         .catch( err =>{
-          res.status(400).json({
+          return res.status(400).json({
             message: 'Something went wrong saving a new user'
           })
         })
-  }
+    })
 }
 
 const login = (req, res, next) => {

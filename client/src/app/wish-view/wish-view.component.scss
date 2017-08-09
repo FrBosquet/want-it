@@ -1,5 +1,8 @@
 @import '../../variables.scss';
 
+$hiddenper : 0.05;
+
+
 .wrapper{
   .heading{
     @include flexcontainer(space-between);
@@ -27,6 +30,8 @@
     @include flexcontainer(flex-start);
     overflow-x: auto;
     padding: 4px 0;
+    border-top: 2px solid $col-detail; 
+    border-bottom: 2px solid $col-detail;
 
     div{
       position: relative;
@@ -48,6 +53,7 @@
         box-sizing: border-box;
         background-color: adjust-color($col-primary, $alpha: -0.5) ;
         width: 100%;
+
       }
 
     }
@@ -72,6 +78,41 @@
         @include bullet;
         padding: 12px;
         margin-right: 0;
+
+        &.clickable{
+          cursor: pointer;
+          display: inline-flex;
+          flex-direction: column;
+
+          span{
+            transition: transform 0.5s;
+
+          }
+
+          .default{
+            transform-origin: 50% 0%;
+
+          }
+
+          .hidden{
+            position: absolute;
+            transform-origin: 50% 100%;
+            transform: scaleY($hiddenper);
+          }
+        }
+
+        &.clickable:hover{
+          .default{
+            transform-origin: 50% 0%;
+            transform: scaleY($hiddenper);
+
+          }
+
+          .hidden{
+            transform-origin: 50% 100%;
+            transform: scaleY(1);
+          }
+        }
       }
     }
 

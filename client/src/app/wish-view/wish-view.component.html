@@ -26,9 +26,15 @@
       <p *ngIf="wish?.hadDate">This wish had gone on {{wish?.hadDate |  date:'dd/MM/yyyy'}} at {{wish?.hadDate |  date:'hh:mm'}}</p>
     </div>
     <div class="foreign" *ngIf="user && session.user && user._id !== session.user._id">
-      <span class="state clickable" *ngIf="wish.state === 1 && !wish.birthdayLock">Nobody is going gift this</span>
-      <span class="state clickable" *ngIf="wish.state === 1 && wish.birthdayLock && wish.birthdayGifter == user._id">You are going to gift this</span>
-      <span class="state not-clickable"*ngIf="wish.state === 1 && wish.birthdayLock && wish.birthdayGifter !== uder._id">Somebody is going to gift this</span>
+      <span class="state clickable" *ngIf="wish.state === 1 && !wish.birthdayLock" (click)="giftThis()">
+        <span class="default">Nobody is going gift this</span>
+        <span class="hidden">Actually i'm going to</span>
+      </span>
+      <span class="state clickable" *ngIf="wish.state === 1 && wish.birthdayLock && wish.birthdayGifter == session.user._id" (click)="ungiftThis()">
+        <span class="default">You are going to gift this</span>
+        <span class="hidden">Well, i regret</span>
+      </span>
+      <span class="state not-clickable"*ngIf="wish.state === 1 && wish.birthdayLock && wish.birthdayGifter !== session.user._id">Somebody is going to gift this</span>
       <span class="state" *ngIf="wish && wish.state === 1">{{user.name}} want this!</span>
       <span class="state" *ngIf="wish && wish.state === 2">{{user.name}} have this</span>
       <span class="state" *ngIf="wish && wish.state === 3">{{user.name}} once had this</span>

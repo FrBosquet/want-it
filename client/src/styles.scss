@@ -31,6 +31,12 @@ input[type="text"], input[type="password"], textarea{
   border-radius: 3px;
 }
 
+.error{
+  text-align: center;
+  padding: 15px;
+  color: $col-detail;
+}
+
 .user-bullet{
   @include dropshadow;
   @include flexcontainer(center);

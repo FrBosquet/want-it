@@ -5,12 +5,12 @@
       <h2>by {{brand?.name}}</h2>
     </div>
     <div class="owner">
-      <h2 *ngIf="user && session.user && user._id !== session.user._id">A wish of @{{user?.username}}</h2>
-      <h2 *ngIf="user && session.user && user._id === session.user._id">A wish of you</h2>
+      <h2 *ngIf="user && session.user && user._id !== session.user._id" (click)="goToUser(user._id)">A wish of <strong>@{{user?.username}}</strong></h2>
+      <h2 *ngIf="user && session.user && user._id === session.user._id" (click)="goToUser(user._id)">A wish of you</h2>
     </div>
   </div>
   <div class="photos">
-    <div *ngFor='let post of posts'>
+    <div *ngFor='let post of posts' class="nav" (click)="goToPost(post._id)">
       <span>"{{post.comment}}"</span>
       <img src="{{post.photoURI}}" alt="placehold">
     </div>

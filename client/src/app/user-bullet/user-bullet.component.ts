@@ -1,6 +1,8 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { SessionService } from '../services/session.service';
+import { RequestService } from '../services/request.service';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-user-bullet',
@@ -10,17 +12,18 @@ import { SessionService } from '../services/session.service';
 export class UserBulletComponent implements OnInit {
   photoURI : string;
 
-  constructor(private router:Router, private session:SessionService) { }
+  constructor(
+    private router:Router,
+    private session:SessionService,
+    private request: RequestService
+  ) { }
 
-  ngOnInit() {
-    // console.log(this.session);
-    // this.session.setUserPhoto();
-  }
-
-  ngAfterViewInit(){
-    console.log(this.session);
-    this.session.setUserPhoto();
-    this.photoURI = this.session.photoURI;
+  ngOnInit(){
+    this.request.get('/user/getuser')
+      .subscribe(res => {
+        console.log('get sessio', res);
+        this.photoURI = `url(${environment.apiEndpoint}/images/${res.user.photoURI || 'default'})`;
+      });
   }
 
   logout(){

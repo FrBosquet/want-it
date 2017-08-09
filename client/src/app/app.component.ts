@@ -17,10 +17,6 @@ export class AppComponent {
     this.session.getSession();
   }
 
-  // requestSession(){
-  //   // this.session.getSession();
-  // }
-
   logout(){
     this.session.unsetSession();
     this.router.navigate(['/']);

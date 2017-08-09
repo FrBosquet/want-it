@@ -3,6 +3,6 @@
   <div class='wrapper'>
     <router-outlet></router-outlet>
   </div>
-  <app-user-bullet></app-user-bullet>
+  <app-user-bullet *ngIf="session.user"></app-user-bullet>
 
 </div>

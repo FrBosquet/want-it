@@ -38,7 +38,7 @@ export class WishViewComponent implements OnInit {
           this.user = this.wish['userId'];
           this.request.get(`/post/product/${this.product['_id']}`)
             .subscribe(res => {
-              this.posts = res.posts.map( e => ({comment: e.comment, photoURI: `${environment.apiEndpoint}/images/${e.photoURI || 'default'}` })).slice(0, 10);
+              this.posts = res.posts.map( e => ({_id: e._id, comment: e.comment, photoURI: `${environment.apiEndpoint}/images/${e.photoURI || 'default'}` })).slice(0, 10);
               console.log(this.posts);
             })
         },
@@ -93,5 +93,17 @@ export class WishViewComponent implements OnInit {
       .subscribe(res => {
         this.wish = res.wish;
       })
+  }
+
+  goToWish(id){
+    this.router.navigate([`/wish/${id}`])
+  }
+
+  goToUser(id){
+    this.router.navigate([`/profile/${id}`])
+  }
+
+  goToPost(id){
+    this.router.navigate([`/post/${id}`])
   }
 }

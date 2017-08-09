@@ -8,7 +8,8 @@ const postSchema = new mongoose.Schema({
     require: true
   },
   comment: String,
-  photoURI: String
+  photoURI: String,
+  comments: []
 }, {
   timestamps: {
     createdAt: "created_at",

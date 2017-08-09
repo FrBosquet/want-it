@@ -35,14 +35,16 @@ import { NewPostModalComponent } from './new-post-modal/new-post-modal.component
 import { GoogleSearchComponent } from './google-search/google-search.component';
 import { PhotoUploaderComponent } from './photo-uploader/photo-uploader.component';
 import { UserBulletComponent } from './user-bullet/user-bullet.component';
+import { PostViewComponent } from './post-view/post-view.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home',  component: HomeComponent },
   { path: 'login', component: LoginViewComponent },
-  { path: 'profile', component: ProfileViewComponent },
+  { path: 'profile/:id', component: ProfileViewComponent },
   { path: 'new-wish', component: NewWishViewComponent },
-  { path: 'wish/:id', component: WishViewComponent }
+  { path: 'wish/:id', component: WishViewComponent },
+  { path: 'post/:id', component: PostViewComponent }
 ];
 
 @NgModule({
@@ -73,6 +75,7 @@ const routes: Routes = [
     GoogleSearchComponent,
     PhotoUploaderComponent,
     UserBulletComponent,
+    PostViewComponent,
   ],
   imports: [
     FormsModule,

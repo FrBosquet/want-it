@@ -3,6 +3,7 @@
 section{
   @include flexcontainer( space-between );
   align-items: flex-start;
+  padding: 10px;
 
   .left-column{
     @include growingchild(1);
@@ -29,6 +30,7 @@ section{
     @include growingchild(10);
 
     .post{
+      cursor: pointer;
       margin-left: 25px;
       margin-top: 5px;
     }

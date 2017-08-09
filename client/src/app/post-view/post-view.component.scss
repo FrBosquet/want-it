@@ -1,0 +1,68 @@
+@import '../../variables.scss';
+
+.wrapper{
+  @include flexcontainer(space-between);
+  align-items: flex-start;
+  padding: 10px;
+
+  &>div{
+    padding: 15px;
+  }
+
+  .left-column{
+    @include fixedwidthchild(400px);
+
+    img{
+      width: 100%;
+      border: 1px solid $col-terciary;
+    }
+  }
+
+  .right-column{
+    @include growingchild(1);
+
+    &>h2{
+      border-bottom: 2px solid $col-detail;
+    }
+
+    &>span{
+      margin-left: 30px;
+    }
+
+    .comment{
+      padding: 10px;
+      font-size: 1.2em;
+    }
+
+    .comment-box{
+      margin-top: 25px;
+      overflow-y: scroll;
+      height: 300px;
+
+      div{
+        padding: 5px;
+        margin: 5px;
+        border: 1px solid $col-terciary;
+        border-radius: 5px;
+
+        .content{
+          display: inline-block;
+          width: 80%;
+        }
+
+        .author{
+          color: $col-primary;
+          display: inline-block;
+          width: 10%;
+        }
+      }
+    }
+
+    app-button{
+      display: block;
+      width: 100%;
+      text-align: right;
+    }
+  }
+
+}

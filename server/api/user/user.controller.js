@@ -64,6 +64,12 @@ const signup = (req, res, next) => {
     })
 }
 
+const getById = (req, res, next) =>{
+  User.findById( req.params.id )
+    .exec()
+    .then(user => res.json({user}))};
+
+
 const login = (req, res, next) => {
   passport.authenticate('local', (err, user, errDetails) => {
     if (err) {
@@ -97,12 +103,6 @@ const login = (req, res, next) => {
   })(req, res, next);
 }
 
-const facebookAuth = passport.authenticate("facebook");
-const facebookCallback = passport.authenticate("facebook", {
-  successRedirect: '/',
-  failureRedirect: '/'
-})
-
 const logout = ( req, res, next ) => {
   req.logout();
   res.status(200).json({
@@ -133,9 +133,8 @@ const all = (req, res, next) => {
 module.exports = {
   ensureLogin,
   signup,
+  getById,
   login,
-  facebookAuth,
-  facebookCallback,
   logout,
   getuser,
   all

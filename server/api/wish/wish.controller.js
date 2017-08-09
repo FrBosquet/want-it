@@ -1,4 +1,5 @@
 const Wish = require('./wish.model');
+const Post = require('../post/post.model');
 
 const getAll = (req, res, next) =>{
   Wish.find()
@@ -154,10 +155,13 @@ const remove = (req, res, next) =>{
   Wish.findByIdAndRemove(req.params.id)
     .exec()
     .then(()=>{
-      res.status(200).json({
-        user: req.user || 'not loged',
-        message: `Delete a wish with id ${req.params.id}`
-      })
+      Post.find({ wishId : req.params.id})
+        .remove()
+        .exec()
+        .then(() => res.status(200).json({
+          user: req.user || 'not loged',
+          message: `Delete a wish with id ${req.params.id}`
+        }));
     })
     .catch(err=>res.status(400).json({
       user: req.user || 'not loged',

@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import { SessionService } from '../services/session.service';
 import { RequestService } from '../services/request.service';
+import { environment } from '../../environments/environment';
 
 
 @Component({
@@ -10,33 +12,66 @@ import { RequestService } from '../services/request.service';
   styleUrls: ['./profile-view.component.scss']
 })
 export class ProfileViewComponent implements OnInit {
-  username:String;
-  name:String;
+  photoURI: string;
+  username: string;
+  name: string;
 
-  wishList: Object[];
-  postList: Object[];
+  wishList: Object[] = [];
+  postList: Object[] = [];
 
   constructor(
+    private route: ActivatedRoute,
     private router: Router,
     private session: SessionService,
     private request: RequestService) { }
 
   ngOnInit() {
-    if(this.session.user){
-      this.username = this.session.user['username'];
-      this.name = this.session.user['name'];
-      this.request.get(`/wish/user/${this.session.user['_id']}`)
-        .subscribe(res => {
-          console.log('wishes', res)
-          this.wishList = res.wishes;
+    this.route.params.subscribe(param =>{
+      if(param['id']){
+        this.request.get(`/user/get/${param['id']}`)
+        .subscribe(res=>{
+          console.log('loookkndnkskndf', res.user);
+          this.username = res.user.username;
+          this.name = res.user.username;
+
+          this.request.get(`/wish/user/${res.user['_id']}`)
+            .subscribe(res => {
+              this.wishList = res.wishes;
+          });
+          this.request.get(`/post/user/${res.user['_id']}`)
+            .subscribe(res => {
+              this.postList = res.posts;
+          });
+          this.photoURI = `url(${environment.apiEndpoint}/images/${res.user.photoURI || 'default'})`;
+        });
+
+      }else{
+        this.router.navigate(['/']);
+      }
+    });
+  }
+
+  deleteWish(id){
+    this.request.delete(`/wish/remove/${id}`)
+      .subscribe(res=>{
+          this.wishList = this.wishList.filter(elm => elm['_id'] !== id);
+          this.postList = this.postList.filter(elm => elm['wishId']['_id'] !== id);
       });
-      this.request.get(`/post/user/${this.session.user['_id']}`)
-        .subscribe(res => {
-          console.log('posts', res)
-          this.postList = res.posts;
-      });
-    }else{
-      this.router.navigate(['/']);
-    }
+  }
+
+  goToWish(id){
+    this.router.navigate([`/wish/${id}`]);
+  }
+
+  deletePost(id){
+    this.request.delete(`/post/remove/${id}`)
+      .subscribe(res=>{
+        this.postList = this.postList.filter(elm => elm['_id'] !== id);
+      })
+  }
+
+  goToPost(id){
+    console.log('goto post', id)
+    this.router.navigate([`/post/${id}`]);
   }
 }

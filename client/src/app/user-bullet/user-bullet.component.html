@@ -1,4 +1,4 @@
-<div (click)="logout()" *ngIf="session.user" class='user-bullet'>
+<div (click)="logout()" class='user-bullet'>
   <div class="user-photo" [ngStyle]="{'background-image': photoURI}"></div>
   <span class="username">{{session.user.name}}</span>
   <span class="logout">logout</span>

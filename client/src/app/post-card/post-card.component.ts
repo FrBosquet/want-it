@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { environment } from '../../environments/environment';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-post-card',
@@ -15,7 +16,7 @@ export class PostCardComponent implements OnInit {
   user:Object;
   photoURI:string;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
     this.edition = this.post.wishId.editionId;
@@ -26,4 +27,8 @@ export class PostCardComponent implements OnInit {
     this.photoURI = `url(${environment.apiEndpoint}/images/${this.post.photoURI || 'default'})`
   }
 
+  goToDetail(){
+    console.log('got to detail')
+    this.router.navigate([`post/${this.post._id}`]);;
+  }
 }

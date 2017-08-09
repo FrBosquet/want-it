@@ -1,0 +1,22 @@
+<section *ngIf="post">
+  <div class="wrapper">
+    <div class="left-column">
+      <h2>{{post.wishId.editionId.productId.name}} {{post.wishId.editionId.name}}</h2>
+      <h5>by {{post.wishId.editionId.productId.brandId.name}}</h5>
+      <img src="{{photoURI}}" alt="">
+    </div>
+    <div class="right-column">
+      <h2 class="comment">"{{post.comment}}"</h2>
+      <span>From a <strong class="nav" (click)="goToWish(post.wishId._id)">wish</strong> of <strong class="nav" (click)="goToUser(post.wishId.userId._id)">{{post.wishId.userId.name}}</strong></span>
+      <div class="comment-box">
+        <div *ngFor="let comment of post.comments">
+          <span class="content">"{{comment.content}}"</span>
+          <span class="author nav" (click)="goToUser(comment.authorId)">@{{comment.author}}</span>
+        </div>
+      </div>
+      <textarea name="name" [(ngModel)]="newContent">
+      </textarea>
+      <app-button [label]="'send'" (click)="newComment()"></app-button>
+    </div>
+  </div>
+</section>

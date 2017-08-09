@@ -1,12 +1,12 @@
 <section>
   <div class="left-column">
     <h1>Profile</h1>
-    <div class="user-photo" [ngStyle]="{'background-image': session.photoURI}"></div>
+    <div class="user-photo" [ngStyle]="{'background-image': photoURI}"></div>
     <h3>{{name}}</h3>
     <h6>@{{username}}</h6>
   </div>
-  <div class="center-column">
-    <h2>Wishes</h2>
+  <div *ngIf="wishList.length !== 0" class="center-column">
+    <h2 >Wishes</h2>
     <div class="wish" *ngFor="let wish of wishList">
       <span class="delete" (click)="deleteWish(wish._id)">
         [delete]
@@ -18,12 +18,12 @@
     </div>
   </div>
   <div class="right-column">
-    <h2>Posts</h2>
+    <h2 *ngIf="postList.length !== 0">Posts</h2>
     <div class="post" *ngFor="let post of postList">
-      <span class="delete" (click)="deletePost(wish._id)">
+      <span class="delete" (click)="deletePost(post._id)">
         [delete]
       </span>
-      <span class="link" (click)="goToWish(wish._id)">
+      <span class="link" (click)="goToPost(post._id)">
         <strong><em>"{{post.comment}}"</em></strong> on
         {{post.wishId.editionId.productId.brandId.name}}
         {{post.wishId.editionId.productId.name}}

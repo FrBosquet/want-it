@@ -17,7 +17,7 @@ const signup = (req, res, next) => {
     photoURI
   } = req.body;
 
-  console.log('Reached here', username, email, password)
+  console.log('Reached here', username, email, password, photoURI)
 
   if (!username || !password || !email || !name || !photoURI) {
     res.json({

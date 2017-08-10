@@ -84,6 +84,23 @@ const getOneOfProduct = (req, res, next) => {
     }));
 }
 
+const getOneOfEdition = (req, res, next) => {
+  retrieveAll()
+    .then(posts =>{
+      const productPosts = posts.filter(elm =>  elm.wishId.editionId._id.toString() === req.params.id);
+      res.status(200).json({
+        user: req.user || 'not loged',
+        message: `Request a random posts for the product ${req.params.id}`,
+        post: productPosts[Math.floor( Math.random() * productPosts.length )]
+      })
+    })
+    .catch(err=>res.status(400).json({
+      user: req.user || 'not loged',
+      message: 'Error requesting posts',
+      err
+    }));
+}
+
 const getByUser = (req, res, next) => {
   retrieveAll()
     .then(posts=>{
@@ -247,6 +264,7 @@ module.exports = {
   getByBrand,
   getByEdition,
   getOneOfProduct,
+  getOneOfEdition,
   getOne,
   create,
   edit,

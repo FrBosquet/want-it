@@ -25,16 +25,20 @@
     @include dropshadow;
     @include flexcontainer(space-between);
     background-color: $col-bg;
-    width: 600px;
+    width: 720px;
     padding: 30px;
     pointer-events: all;
 
-    div{
-      width: 40%;
+    .logo{
+      width: 120px;
+    }
+
+    .form{
+      width: 250px;
     }
 
     .wiki-suggest{
-      width: 20%;
+      width: 100px;
       overflow: hidden;;
 
       h6{
@@ -48,6 +52,7 @@
     }
 
     .wiki-search{
+      width: 250px;
       p{
         height: 100px;
         overflow: hidden;

@@ -1,4 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { environment } from '../../environments/environment';
+import { RequestService } from '../services/request.service';
 
 @Component({
   selector: 'app-edition-card',
@@ -7,9 +9,21 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class EditionCardComponent implements OnInit {
   @Input() edition;
-  constructor() { }
+  photoURI: string;
+  constructor(private request: RequestService) { }
 
   ngOnInit() {
+    if(this.edition['productId']){
+      this.request.get(`/post/edition/one/${this.edition['_id']}`)
+      .subscribe(res => {
+
+        this.photoURI = `url(${environment.apiEndpoint}/images/${res.post ? res.post.photoURI : 'default'})`;
+      });
+
+    }else{
+      this.photoURI = `url(${environment.apiEndpoint}/images/default)`;
+
+    }
   }
 
 }

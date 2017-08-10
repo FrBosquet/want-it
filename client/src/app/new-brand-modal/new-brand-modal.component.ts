@@ -1,6 +1,6 @@
 import { Component, OnInit, Output, EventEmitter, NgZone } from '@angular/core';
 import { RequestService } from '../services/request.service';
-
+import { Http, Response } from '@angular/http';
 
 @Component({
   selector: 'app-new-brand-modal',
@@ -15,13 +15,14 @@ export class NewBrandModalComponent implements OnInit {
   longName: string;
   country:  string;
   nonsuggested: string;
+  brandUrl: string;
 
   wikiTitle: string = "This is a wikipedia search!";
   wikiDesc: string = "You could find some nice reference here";
   wikiSugestion: string[];
   wikiDescriptions: string[];
 
-  constructor(private request: RequestService, private zone:NgZone) { }
+  constructor(private request: RequestService, private zone:NgZone, private http:Http) { }
 
   ngOnInit() {
   }
@@ -32,8 +33,6 @@ export class NewBrandModalComponent implements OnInit {
       this.nonsuggested = undefined;
       this.wikiSugestion = data[1];
       this.wikiDescriptions = data[2];
-      console.log("wikisug",this.wikiSugestion);
-
       if(this.wikiSugestion.indexOf(this.shortName) === -1){
         this.nonsuggested = this.shortName;
         this.pickSuggestion(-1, false);
@@ -80,15 +79,25 @@ export class NewBrandModalComponent implements OnInit {
             this.request.post('/brand/create',{
               name: this.shortName,
               fullName: this.longName,
-              country: this.country
+              country: this.country,
+              logoURI: this.brandUrl
             })
             .subscribe(res=>{
-              this.onFinish.emit({brand:res.brand});
-              this.onClickOutside.emit();
+              let path = `/photo/save`;
+              this.request.post(path,{id: this.brandUrl})
+                .subscribe(saveRes=>{
+                  console.log('saved the earth', res);
+                  this.onFinish.emit({brand:res.brand});
+                  this.onClickOutside.emit();
+                });
             });
           }
         }
       )
+  }
+
+  photoChange(uri){
+    this.brandUrl = uri;
   }
 
   hideBrandModal(){

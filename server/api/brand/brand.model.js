@@ -7,7 +7,8 @@ const brandSchema = new mongoose.Schema({
     require: true
   },
   country: String,
-  fullName: String
+  fullName: String,
+  logoURI: String
 }, {
   timestamps: {
     createdAt: "created_at",

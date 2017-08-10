@@ -292,7 +292,7 @@ AppModule = __decorate([
 /***/ "../../../../../src/app/brand-card/brand-card.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class='brand-card'>\n  <img src=\"http://via.placeholder.com/60x60\" alt=\"\">\n  <h6>{{brand.name}}</h6>\n</div>\n"
+module.exports = "<div class='brand-card'>\n  <div class=\"img\" [ngStyle]=\"{'background-image': photoURI}\">\n  </div>\n  <h6>{{brand.name}}</h6>\n</div>\n"
 
 /***/ }),
 
@@ -304,7 +304,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".brand-card {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n      -ms-flex-direction: column;\n          flex-direction: column;\n  width: calc( 100% - 5px);\n  height: 140px; }\n  @media screen and (max-width: 48em) {\n    .brand-card {\n      -webkit-box-orient: vertical;\n      -webkit-box-direction: normal;\n          -ms-flex-direction: column;\n              flex-direction: column; } }\n  .brand-card img {\n    transition: -webkit-transform 0.5s;\n    transition: transform 0.5s;\n    transition: transform 0.5s, -webkit-transform 0.5s;\n    cursor: pointer;\n    max-width: 90%;\n    margin: 0 auto; }\n  .brand-card img:hover {\n    -webkit-transform: scale(1.2);\n            transform: scale(1.2); }\n  .brand-card h6 {\n    text-align: center;\n    white-space: nowrap;\n    text-overflow: ellipsis;\n    overflow: hidden;\n    max-width: 80%; }\n", ""]);
+exports.push([module.i, ".brand-card {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n      -ms-flex-direction: column;\n          flex-direction: column;\n  width: calc( 100% - 5px);\n  height: 140px; }\n  @media screen and (max-width: 48em) {\n    .brand-card {\n      -webkit-box-orient: vertical;\n      -webkit-box-direction: normal;\n          -ms-flex-direction: column;\n              flex-direction: column; } }\n  .brand-card .img {\n    transition: -webkit-transform 0.5s;\n    transition: transform 0.5s;\n    transition: transform 0.5s, -webkit-transform 0.5s;\n    cursor: pointer;\n    max-width: 90%;\n    margin: 0 auto; }\n  .brand-card .img:hover {\n    -webkit-transform: scale(1.2);\n            transform: scale(1.2); }\n  .brand-card h6 {\n    text-align: center;\n    white-space: nowrap;\n    text-overflow: ellipsis;\n    overflow: hidden;\n    max-width: 80%; }\n  .brand-card .img {\n    height: 60px;\n    width: 60px;\n    background-size: cover;\n    background-position: center; }\n", ""]);
 
 // exports
 
@@ -319,6 +319,7 @@ module.exports = module.exports.toString();
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__environments_environment__ = __webpack_require__("../../../../../src/environments/environment.ts");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return BrandCardComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -330,10 +331,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
 var BrandCardComponent = (function () {
     function BrandCardComponent() {
     }
     BrandCardComponent.prototype.ngOnInit = function () {
+        console.log(this.brand);
+        this.photoURI = "url(" + __WEBPACK_IMPORTED_MODULE_1__environments_environment__["a" /* environment */].apiEndpoint + "/images/" + (this.brand.logoURI || 'default') + ")";
     };
     return BrandCardComponent;
 }());
@@ -532,7 +536,7 @@ ButtonComponent = __decorate([
 /***/ "../../../../../src/app/edition-card/edition-card.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class='edition-card'>\n  <img src=\"http://via.placeholder.com/60x60\" alt=\"\">\n  <h6>{{edition.name}}</h6>\n</div>\n"
+module.exports = "<div class='edition-card'>\n  <div class=\"img\" [ngStyle]=\"{'background-image': photoURI}\"></div>\n  <h6>{{edition.name}}</h6>\n</div>\n"
 
 /***/ }),
 
@@ -544,7 +548,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".edition-card {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n      -ms-flex-direction: column;\n          flex-direction: column;\n  width: calc( 100% - 5px);\n  height: 140px; }\n  @media screen and (max-width: 48em) {\n    .edition-card {\n      -webkit-box-orient: vertical;\n      -webkit-box-direction: normal;\n          -ms-flex-direction: column;\n              flex-direction: column; } }\n  .edition-card img {\n    transition: -webkit-transform 0.5s;\n    transition: transform 0.5s;\n    transition: transform 0.5s, -webkit-transform 0.5s;\n    cursor: pointer;\n    max-width: 90%;\n    margin: 0 auto; }\n  .edition-card img:hover {\n    -webkit-transform: scale(1.2);\n            transform: scale(1.2); }\n  .edition-card h6 {\n    text-align: center;\n    white-space: nowrap;\n    text-overflow: ellipsis;\n    overflow: hidden;\n    max-width: 80%; }\n", ""]);
+exports.push([module.i, ".edition-card {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n      -ms-flex-direction: column;\n          flex-direction: column;\n  width: calc( 100% - 5px);\n  height: 140px; }\n  @media screen and (max-width: 48em) {\n    .edition-card {\n      -webkit-box-orient: vertical;\n      -webkit-box-direction: normal;\n          -ms-flex-direction: column;\n              flex-direction: column; } }\n  .edition-card .img {\n    transition: -webkit-transform 0.5s;\n    transition: transform 0.5s;\n    transition: transform 0.5s, -webkit-transform 0.5s;\n    cursor: pointer;\n    max-width: 90%;\n    margin: 0 auto; }\n  .edition-card .img:hover {\n    -webkit-transform: scale(1.2);\n            transform: scale(1.2); }\n  .edition-card h6 {\n    text-align: center;\n    white-space: nowrap;\n    text-overflow: ellipsis;\n    overflow: hidden;\n    max-width: 80%; }\n  .edition-card .img {\n    height: 60px;\n    width: 60px;\n    background-size: cover;\n    background-position: center; }\n", ""]);
 
 // exports
 
@@ -559,6 +563,8 @@ module.exports = module.exports.toString();
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__environments_environment__ = __webpack_require__("../../../../../src/environments/environment.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_request_service__ = __webpack_require__("../../../../../src/app/services/request.service.ts");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return EditionCardComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -570,10 +576,23 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
+
 var EditionCardComponent = (function () {
-    function EditionCardComponent() {
+    function EditionCardComponent(request) {
+        this.request = request;
     }
     EditionCardComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        if (this.edition['productId']) {
+            this.request.get("/post/edition/one/" + this.edition['_id'])
+                .subscribe(function (res) {
+                _this.photoURI = "url(" + __WEBPACK_IMPORTED_MODULE_1__environments_environment__["a" /* environment */].apiEndpoint + "/images/" + (res.post ? res.post.photoURI : 'default') + ")";
+            });
+        }
+        else {
+            this.photoURI = "url(" + __WEBPACK_IMPORTED_MODULE_1__environments_environment__["a" /* environment */].apiEndpoint + "/images/default)";
+        }
     };
     return EditionCardComponent;
 }());
@@ -587,9 +606,10 @@ EditionCardComponent = __decorate([
         template: __webpack_require__("../../../../../src/app/edition-card/edition-card.component.html"),
         styles: [__webpack_require__("../../../../../src/app/edition-card/edition-card.component.scss")]
     }),
-    __metadata("design:paramtypes", [])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__services_request_service__["a" /* RequestService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_request_service__["a" /* RequestService */]) === "function" && _a || Object])
 ], EditionCardComponent);
 
+var _a;
 //# sourceMappingURL=edition-card.component.js.map
 
 /***/ }),
@@ -1064,7 +1084,7 @@ var _a, _b, _c;
 /***/ "../../../../../src/app/new-brand-modal/new-brand-modal.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"occluder\" (click)=\"hideBrandModal()\"></div>\n<div class=\"wrapper\">\n  <div class=\"modal\">\n\n    <div class=\"form\">\n      <label for=\"shortname\">Short name</label>\n      <input type=\"text\" name=\"shortname\" [(ngModel)]=\"shortName\" (change)=\"wikiRef()\">\n      <label for=\"longname\">Long name</label>\n      <input type=\"text\" name=\"longname\"  [(ngModel)]=\"longName\">\n      <label for=\"country\">Country</label>\n      <input type=\"text\" name=\"country\"  [(ngModel)]=\"country\">\n      <app-button [label]=\"'create'\" (click)=\"createBrand()\"></app-button>\n    </div>\n\n    <div class=\"wiki-suggest\">\n      <h6 *ngIf=\"nonsuggested\" (click)=\"pickSuggestion(-1, true)\">{{nonsuggested}}</h6>\n      <h6 *ngFor=\"let sugest of wikiSugestion, let i=index\" (click)=\"pickSuggestion(i, true)\">{{sugest}}</h6>\n    </div>\n\n    <div class=\"wiki-search\">\n      <h5>{{wikiTitle}}</h5>\n      <p>{{wikiDesc}}</p>\n    </div>\n\n  </div>\n</div>\n"
+module.exports = "<div class=\"occluder\" (click)=\"hideBrandModal()\"></div>\n<div class=\"wrapper\">\n  <div class=\"modal\">\n\n    <div class=\"logo\">\n      <app-photo-uploader (onPhotoChange)=\"photoChange($event)\"></app-photo-uploader>\n    </div>\n\n    <div class=\"form\">\n      <label for=\"shortname\">Short name</label>\n      <input type=\"text\" name=\"shortname\" [(ngModel)]=\"shortName\" (change)=\"wikiRef()\">\n      <label for=\"longname\">Long name</label>\n      <input type=\"text\" name=\"longname\"  [(ngModel)]=\"longName\">\n      <label for=\"country\">Country</label>\n      <input type=\"text\" name=\"country\"  [(ngModel)]=\"country\">\n      <app-button [label]=\"'create'\" (click)=\"createBrand()\"></app-button>\n    </div>\n\n    <div class=\"wiki-suggest\">\n      <h6 *ngIf=\"nonsuggested\" (click)=\"pickSuggestion(-1, true)\">{{nonsuggested}}</h6>\n      <h6 *ngFor=\"let sugest of wikiSugestion, let i=index\" (click)=\"pickSuggestion(i, true)\">{{sugest}}</h6>\n    </div>\n\n    <div class=\"wiki-search\">\n      <h5>{{wikiTitle}}</h5>\n      <p>{{wikiDesc}}</p>\n    </div>\n\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -1076,7 +1096,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".occluder {\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 460px;\n  background-color: #333;\n  opacity: 0.5;\n  z-index: 100; }\n\n.wrapper {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 460px;\n  pointer-events: none;\n  z-index: 101; }\n  @media screen and (max-width: 48em) {\n    .wrapper {\n      -webkit-box-orient: vertical;\n      -webkit-box-direction: normal;\n          -ms-flex-direction: column;\n              flex-direction: column; } }\n  .wrapper .modal {\n    box-shadow: 0px 5px 5px 0px #888;\n    margin-bottom: 10px;\n    border: 1px solid #CCC;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-pack: justify;\n        -ms-flex-pack: justify;\n            justify-content: space-between;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    background-color: #F9F9F9;\n    width: 600px;\n    padding: 30px;\n    pointer-events: all; }\n    @media screen and (max-width: 48em) {\n      .wrapper .modal {\n        -webkit-box-orient: vertical;\n        -webkit-box-direction: normal;\n            -ms-flex-direction: column;\n                flex-direction: column; } }\n    .wrapper .modal div {\n      width: 40%; }\n    .wrapper .modal .wiki-suggest {\n      width: 20%;\n      overflow: hidden; }\n      .wrapper .modal .wiki-suggest h6 {\n        cursor: pointer;\n        line-height: 15px;\n        margin: 2px;\n        white-space: nowrap;\n        text-overflow: ellipsis;\n        overflow: hidden; }\n    .wrapper .modal .wiki-search p {\n      height: 100px;\n      overflow: hidden; }\n", ""]);
+exports.push([module.i, ".occluder {\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 460px;\n  background-color: #333;\n  opacity: 0.5;\n  z-index: 100; }\n\n.wrapper {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 460px;\n  pointer-events: none;\n  z-index: 101; }\n  @media screen and (max-width: 48em) {\n    .wrapper {\n      -webkit-box-orient: vertical;\n      -webkit-box-direction: normal;\n          -ms-flex-direction: column;\n              flex-direction: column; } }\n  .wrapper .modal {\n    box-shadow: 0px 5px 5px 0px #888;\n    margin-bottom: 10px;\n    border: 1px solid #CCC;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-pack: justify;\n        -ms-flex-pack: justify;\n            justify-content: space-between;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    background-color: #F9F9F9;\n    width: 720px;\n    padding: 30px;\n    pointer-events: all; }\n    @media screen and (max-width: 48em) {\n      .wrapper .modal {\n        -webkit-box-orient: vertical;\n        -webkit-box-direction: normal;\n            -ms-flex-direction: column;\n                flex-direction: column; } }\n    .wrapper .modal .logo {\n      width: 120px; }\n    .wrapper .modal .form {\n      width: 250px; }\n    .wrapper .modal .wiki-suggest {\n      width: 100px;\n      overflow: hidden; }\n      .wrapper .modal .wiki-suggest h6 {\n        cursor: pointer;\n        line-height: 15px;\n        margin: 2px;\n        white-space: nowrap;\n        text-overflow: ellipsis;\n        overflow: hidden; }\n    .wrapper .modal .wiki-search {\n      width: 250px; }\n      .wrapper .modal .wiki-search p {\n        height: 100px;\n        overflow: hidden; }\n", ""]);
 
 // exports
 
@@ -1092,6 +1112,7 @@ module.exports = module.exports.toString();
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_request_service__ = __webpack_require__("../../../../../src/app/services/request.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return NewBrandModalComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1104,10 +1125,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+
 var NewBrandModalComponent = (function () {
-    function NewBrandModalComponent(request, zone) {
+    function NewBrandModalComponent(request, zone, http) {
         this.request = request;
         this.zone = zone;
+        this.http = http;
         this.onClickOutside = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
         this.onFinish = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
         this.wikiTitle = "This is a wikipedia search!";
@@ -1122,7 +1145,6 @@ var NewBrandModalComponent = (function () {
             _this.nonsuggested = undefined;
             _this.wikiSugestion = data[1];
             _this.wikiDescriptions = data[2];
-            console.log("wikisug", _this.wikiSugestion);
             if (_this.wikiSugestion.indexOf(_this.shortName) === -1) {
                 _this.nonsuggested = _this.shortName;
                 _this.pickSuggestion(-1, false);
@@ -1170,14 +1192,23 @@ var NewBrandModalComponent = (function () {
                 _this.request.post('/brand/create', {
                     name: _this.shortName,
                     fullName: _this.longName,
-                    country: _this.country
+                    country: _this.country,
+                    logoURI: _this.brandUrl
                 })
                     .subscribe(function (res) {
-                    _this.onFinish.emit({ brand: res.brand });
-                    _this.onClickOutside.emit();
+                    var path = "/photo/save";
+                    _this.request.post(path, { id: _this.brandUrl })
+                        .subscribe(function (saveRes) {
+                        console.log('saved the earth', res);
+                        _this.onFinish.emit({ brand: res.brand });
+                        _this.onClickOutside.emit();
+                    });
                 });
             }
         });
+    };
+    NewBrandModalComponent.prototype.photoChange = function (uri) {
+        this.brandUrl = uri;
     };
     NewBrandModalComponent.prototype.hideBrandModal = function () {
         this.onClickOutside.emit();
@@ -1198,10 +1229,10 @@ NewBrandModalComponent = __decorate([
         template: __webpack_require__("../../../../../src/app/new-brand-modal/new-brand-modal.component.html"),
         styles: [__webpack_require__("../../../../../src/app/new-brand-modal/new-brand-modal.component.scss")]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_request_service__["a" /* RequestService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_request_service__["a" /* RequestService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["NgZone"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["NgZone"]) === "function" && _b || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_request_service__["a" /* RequestService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_request_service__["a" /* RequestService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["NgZone"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["NgZone"]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_http__["b" /* Http */]) === "function" && _c || Object])
 ], NewBrandModalComponent);
 
-var _a, _b;
+var _a, _b, _c;
 //# sourceMappingURL=new-brand-modal.component.js.map
 
 /***/ }),
@@ -1994,7 +2025,7 @@ var _a, _b, _c, _d;
 /***/ "../../../../../src/app/product-card/product-card.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class='product-card'>\n  <img src=\"http://via.placeholder.com/60x60\" alt=\"\">\n  <h6>{{product.name}}</h6>\n</div>\n"
+module.exports = "<div class='product-card'>\n  <div class=\"img\" [ngStyle]=\"{'background-image': photoURI}\"></div>\n  <h6>{{product.name}}</h6>\n</div>\n"
 
 /***/ }),
 
@@ -2006,7 +2037,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".product-card {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n      -ms-flex-direction: column;\n          flex-direction: column;\n  width: calc( 100% - 5px);\n  height: 140px; }\n  @media screen and (max-width: 48em) {\n    .product-card {\n      -webkit-box-orient: vertical;\n      -webkit-box-direction: normal;\n          -ms-flex-direction: column;\n              flex-direction: column; } }\n  .product-card img {\n    transition: -webkit-transform 0.5s;\n    transition: transform 0.5s;\n    transition: transform 0.5s, -webkit-transform 0.5s;\n    cursor: pointer;\n    max-width: 90%;\n    margin: 0 auto; }\n  .product-card img:hover {\n    -webkit-transform: scale(1.2);\n            transform: scale(1.2); }\n  .product-card h6 {\n    text-align: center;\n    white-space: nowrap;\n    text-overflow: ellipsis;\n    overflow: hidden;\n    max-width: 80%; }\n", ""]);
+exports.push([module.i, ".product-card {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n      -ms-flex-direction: column;\n          flex-direction: column;\n  width: calc( 100% - 5px);\n  height: 140px; }\n  @media screen and (max-width: 48em) {\n    .product-card {\n      -webkit-box-orient: vertical;\n      -webkit-box-direction: normal;\n          -ms-flex-direction: column;\n              flex-direction: column; } }\n  .product-card .img {\n    transition: -webkit-transform 0.5s;\n    transition: transform 0.5s;\n    transition: transform 0.5s, -webkit-transform 0.5s;\n    cursor: pointer;\n    max-width: 90%;\n    margin: 0 auto; }\n  .product-card .img:hover {\n    -webkit-transform: scale(1.2);\n            transform: scale(1.2); }\n  .product-card h6 {\n    text-align: center;\n    white-space: nowrap;\n    text-overflow: ellipsis;\n    overflow: hidden;\n    max-width: 80%; }\n  .product-card .img {\n    height: 60px;\n    width: 60px;\n    background-size: cover;\n    background-position: center; }\n", ""]);
 
 // exports
 
@@ -2021,6 +2052,8 @@ module.exports = module.exports.toString();
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__environments_environment__ = __webpack_require__("../../../../../src/environments/environment.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_request_service__ = __webpack_require__("../../../../../src/app/services/request.service.ts");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ProductCardComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -2032,10 +2065,18 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
+
 var ProductCardComponent = (function () {
-    function ProductCardComponent() {
+    function ProductCardComponent(request) {
+        this.request = request;
     }
     ProductCardComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.request.get("/post/product/one/" + this.product['_id'])
+            .subscribe(function (res) {
+            _this.photoURI = "url(" + __WEBPACK_IMPORTED_MODULE_1__environments_environment__["a" /* environment */].apiEndpoint + "/images/" + (res.post ? res.post.photoURI : 'default') + ")";
+        });
     };
     return ProductCardComponent;
 }());
@@ -2049,9 +2090,10 @@ ProductCardComponent = __decorate([
         template: __webpack_require__("../../../../../src/app/product-card/product-card.component.html"),
         styles: [__webpack_require__("../../../../../src/app/product-card/product-card.component.scss")]
     }),
-    __metadata("design:paramtypes", [])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__services_request_service__["a" /* RequestService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_request_service__["a" /* RequestService */]) === "function" && _a || Object])
 ], ProductCardComponent);
 
+var _a;
 //# sourceMappingURL=product-card.component.js.map
 
 /***/ }),
@@ -2782,9 +2824,10 @@ var WishViewComponent = (function () {
     };
     WishViewComponent.prototype.newPost = function (post) {
         this.hidePostModal();
-        console.log('Created a new post', post.post);
         this.posts.unshift({
-            comment: post.post.comment, photoURI: __WEBPACK_IMPORTED_MODULE_4__environments_environment__["a" /* environment */].apiEndpoint + "/images/" + post.post.photoURI
+            comment: post.post.comment,
+            _id: post.post._id,
+            photoURI: __WEBPACK_IMPORTED_MODULE_4__environments_environment__["a" /* environment */].apiEndpoint + "/images/" + post.post.photoURI
         });
     };
     WishViewComponent.prototype.stateChange = function (event) {

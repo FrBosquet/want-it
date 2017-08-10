@@ -2,4 +2,11 @@
 
 .product-card{
   @include littlecard
+
+  .img{
+    height: 60px;
+    width: 60px;
+    background-size: cover;
+    background-position: center;
+  }
 }

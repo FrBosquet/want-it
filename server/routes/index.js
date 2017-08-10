@@ -7,11 +7,11 @@ module.exports = (app) => {
   app.use('/photo',   require('./photo'   ));
   app.use('/wish',    require('./wish'    ));
   app.use('/post',    require('./post'    ));
-  app.use('/shop',    require('./google'    ));
+  app.use('/shop',    require('./google'  ));
   app.use('/user',    require('./user'    ));
 
 	// catch 404 and forward to Angular
   app.all('/*', function (req, res) {
-    res.sendfile(__dirname + '/public/index.html');
+    res.sendfile('public/index.html');
   });
 };

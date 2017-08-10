@@ -76,7 +76,7 @@ const getByName = (req, res, next) => {
 }
 
 const create = (req, res, next) =>{
-  const { name, country, fullName } = req.body;
+  const { name, country, fullName, logoURI} = req.body;
   if( !name || !country || !fullName ){
     res.status(400).json({
       user: req.user || 'not loged',
@@ -84,7 +84,7 @@ const create = (req, res, next) =>{
     })
   }
   else{
-    const brand = new Brand({name, country, fullName});
+    const brand = new Brand({name, country, fullName, logoURI});
     brand
       .save()
       .then(

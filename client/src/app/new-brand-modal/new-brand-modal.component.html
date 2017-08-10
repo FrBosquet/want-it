@@ -2,6 +2,10 @@
 <div class="wrapper">
   <div class="modal">
 
+    <div class="logo">
+      <app-photo-uploader (onPhotoChange)="photoChange($event)"></app-photo-uploader>
+    </div>
+
     <div class="form">
       <label for="shortname">Short name</label>
       <input type="text" name="shortname" [(ngModel)]="shortName" (change)="wikiRef()">

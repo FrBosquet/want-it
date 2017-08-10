@@ -40,14 +40,14 @@ $mea-pagewidth: 1280px;
   height:140px;
 
 
-  img{
+  .img{
     transition: transform 0.5s;
     cursor: pointer;
     max-width: 90%;
     margin: 0 auto;
   }
 
-  img:hover{
+  .img:hover{
     transform: scale(1.2);
   }
   h6{

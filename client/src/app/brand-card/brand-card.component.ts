@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-brand-card',
@@ -7,9 +8,12 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class BrandCardComponent implements OnInit {
   @Input() brand;
+  photoURI: string;
   constructor() { }
 
   ngOnInit() {
+    console.log(this.brand);
+    this.photoURI = `url(${environment.apiEndpoint}/images/${this.brand.logoURI || 'default'})`;
   }
 
 }

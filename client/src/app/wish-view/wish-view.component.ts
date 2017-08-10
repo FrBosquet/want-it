@@ -82,9 +82,10 @@ export class WishViewComponent implements OnInit {
 
   newPost(post){
     this.hidePostModal();
-    console.log('Created a new post', post.post);
     this.posts.unshift({
-      comment: post.post.comment, photoURI: `${environment.apiEndpoint}/images/${post.post.photoURI}`
+      comment: post.post.comment,
+      _id: post.post._id,
+      photoURI: `${environment.apiEndpoint}/images/${post.post.photoURI}`
     })
   }
 

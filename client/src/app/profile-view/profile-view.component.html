@@ -8,8 +8,11 @@
   <div *ngIf="wishList.length !== 0" class="center-column">
     <h2 >Wishes</h2>
     <div class="wish" *ngFor="let wish of wishList">
-      <span class="delete" (click)="deleteWish(wish._id)">
-        [delete]
+      <span
+        class="delete"
+        *ngIf="user && session.user && user._id === session.user._id"
+        (click)="deleteWish(wish._id)">
+          [delete]
       </span>
       <span class="link" (click)="goToWish(wish._id)">
         {{wish.editionId.productId.brandId.name}}
@@ -20,8 +23,11 @@
   <div class="right-column">
     <h2 *ngIf="postList.length !== 0">Posts</h2>
     <div class="post" *ngFor="let post of postList">
-      <span class="delete" (click)="deletePost(post._id)">
-        [delete]
+      <span
+        class="delete"
+        *ngIf="user && session.user && user._id === session.user._id"
+        (click)="deletePost(post._id)">
+          [delete]
       </span>
       <span class="link" (click)="goToPost(post._id)">
         <strong><em>"{{post.comment}}"</em></strong> on

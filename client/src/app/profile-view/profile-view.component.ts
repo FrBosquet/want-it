@@ -14,6 +14,7 @@ import { environment } from '../../environments/environment';
 export class ProfileViewComponent implements OnInit {
   photoURI: string;
   username: string;
+  user: object;
   name: string;
 
   wishList: Object[] = [];
@@ -30,9 +31,9 @@ export class ProfileViewComponent implements OnInit {
       if(param['id']){
         this.request.get(`/user/get/${param['id']}`)
         .subscribe(res=>{
-          console.log('loookkndnkskndf', res.user);
           this.username = res.user.username;
           this.name = res.user.username;
+          this.user = res.user;
 
           this.request.get(`/wish/user/${res.user['_id']}`)
             .subscribe(res => {
@@ -71,7 +72,6 @@ export class ProfileViewComponent implements OnInit {
   }
 
   goToPost(id){
-    console.log('goto post', id)
     this.router.navigate([`/post/${id}`]);
   }
 }
